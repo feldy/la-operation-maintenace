@@ -12,8 +12,12 @@
     <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet">
 
     <link href="lib/css/animate.css" rel="stylesheet">
+    <link href="css/default.css" rel="stylesheet">
     <link href="lib/css/style.css" rel="stylesheet">
     <link href="lib/css/plugins/switchery/switchery.css" rel="stylesheet">
+    
+    <link href="lib/css/plugins/summernote/summernote.css" rel="stylesheet">
+    <link href="lib/css/plugins/summernote/summernote-bs3.css" rel="stylesheet">
 
 </head>
 
@@ -65,12 +69,14 @@
     </div>
     <?php } ?>
 
-    <!-- Switchery -->
-    <script src="lib/js/plugins/switchery/switchery.js"></script>
-    <script src="js/main.js"></script>
     <!-- Mainly scripts -->
     <script src="lib/js/jquery-2.1.1.js"></script>
     <script src="lib/js/bootstrap.min.js"></script>
+    <!-- Switchery -->
+    <script src="lib/js/plugins/switchery/switchery.js"></script>
+    <script src="js/main.js"></script>
+    <!-- SUMMERNOTE -->
+    <script src="lib/js/plugins/summernote/summernote.min.js"></script>
 
 </body>
 

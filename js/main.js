@@ -1,6 +1,12 @@
-new Switchery(document.querySelector('.js-switch'), { color: '#1AB394' });
-new Switchery(document.querySelector('.js-switch2'), { color: '#1AB394' });
-new Switchery(document.querySelector('.js-switch3'), { color: '#1AB394' });
-new Switchery(document.querySelector('.js-switch4'), { color: '#1AB394' });
-new Switchery(document.querySelector('.js-switch5'), { color: '#1AB394' });
-new Switchery(document.querySelector('.js-switch6'), { color: '#1AB394' });
+$(document).ready(function(){
+	for (var i = 1; i <= 13; i++) {
+		new Switchery(document.querySelector('.js-switch'+i), { color: '#1AB394' });
+	}
+
+	$('.summernote').summernote({
+		toolbar: [				 
+			['style', ['bold', 'italic', 'underline', 'clear']],
+			['style', ['style']]
+		]});
+
+});

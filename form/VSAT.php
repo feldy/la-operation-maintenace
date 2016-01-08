@@ -64,7 +64,7 @@
 		                    </div>
 		                    <div class="form-group">
 		                    	<label>Bertumpuk</label><br />
-		                        Tidak <input type="checkbox" class="js-switch" /> Ya
+		                        Tidak <input type="checkbox" class="js-switch1" /> Ya
 		                    </div>
 		                    <div class="form-group">
 		                    	<label>Lokasi (Lantai, Ruang, Rack)</label>
@@ -128,8 +128,123 @@
 		                        Tidak <input type="checkbox" class="js-switch6" /> Ya
 		                    </div>
 
+		                    <div class="form-group">
+		                    	<label>V Input Modem (Phasa - Netral)</label>
+		                    	<div class="input-group m-b"><input type="text" placeholder="Standard (210-230 VAC)" class="form-control"> <span class="input-group-addon">VAC</span></div>
+		                    </div>
+		                    <div class="form-group">
+		                    	<label>V Input Modem (Netral - Ground)</label>
+		                    	<div class="input-group m-b"><input type="text" placeholder="Standard (< 1 VAC)" class="form-control"> <span class="input-group-addon">VAC</span></div>
+
+		                    </div>
+		                    <div class="form-group">
+		                    	<label>Suhu Casing Modem</label><br />
+		                        Tidak Panas <input type="checkbox" class="js-switch7" /> Panas
+		                    </div>
+		                    <div class="form-group">
+		                    	<label>Catuan Input Terbounding ke Ground</label><br />
+		                        Ya, Kencang <input type="checkbox" class="js-switch8" /> Tidak
+		                    </div>
+		                    <div class="form-group">
+		                    	<label>Splicing Konektor kabel IFL di modem</label><br />
+		                        Baik, Rapi <input type="checkbox" class="js-switch9" /> Tidak
+		                    </div>
+		                    <div class="form-group">
+		                    	<label>Perangkat CPE mendapat catuan sama dengan modem</label><br />
+		                        Tidak <input type="checkbox" class="js-switch10" /> Ya
+		                    </div>
+		                    <div class="form-group">
+		                    	<label>Perangkat CPE terbounding dalam 1 ground yang sama dengan Modem</label><br />
+		                        Tidak <input type="checkbox" class="js-switch11" /> Ya
+		                    </div>
+
+
 
 		                    <button class="btn btn-white" type="submit">Next</button></form>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+		    	<div class="ibox float-e-margins">
+		            <div class="ibox-title">
+		                <h5>Temuan</h5>
+		            </div>
+		            <div class="ibox-content">
+		                <form role="form" class="form-horizontal">
+	                        <div class="summernote">
+	                            
+	                        </div>
+		                </form>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+		    	<div class="ibox float-e-margins">
+		            <div class="ibox-title">
+		                <h5>Cabling Installation</h5>
+		            </div>
+		            <div class="ibox-content">
+		               <form role="form" class="form-horizontal">
+		                    <div class="form-group">
+		                    	<label>Type Kabel IFL</label>
+		                        <select class="form-control m-b" name="account">
+                                    <option>LMR 240</option>
+                                    <option>Belden 9913</option>
+                                    <option>Belden 9292</option>
+                                    <option>Conscope</option>
+                                </select>
+		                    </div>
+		                    <div class="form-group">
+		                    	<label>Panjang Kabel</label>
+		                    	<div class="input-group m-b"><input type="text" placeholder="" class="form-control"> <span class="input-group-addon">Meter</span></div>
+		                    </div>
+		                    <div class="form-group">
+		                    	<label>Tahanan Short Kabel IFL</label>
+		                    	<div class="input-group m-b"><input type="text" placeholder="" class="form-control"> <span class="input-group-addon">Ohm</span></div>
+		                    </div>
+		                    <div class="form-group">
+		                    	<label>Splicing Konektor kabel IFL di Antena</label><br />
+		                    	Rapat, Baik <input type="checkbox" class="js-switch12" /> Longgar
+		                    </div>
+		                    <div class="form-group">
+		                    	<label>System RF terbounding dengan Ground</label><br />
+		                    	Tidak <input type="checkbox" class="js-switch13" /> Ya
+		                    </div>
+		                </form>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+		    	<div class="ibox float-e-margins">
+		            <div class="ibox-title">
+		                <h5>Temuan</h5>
+		            </div>
+		            <div class="ibox-content">
+		                <form role="form" class="form-horizontal">
+	                        <div class="summernote"></div>
+		                </form>
+	                    *Hanya untuk mounting standard/NPM (None Penetrating Mounting)
+		            </div>
+		        </div>
+		    </div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+		    	<div class="ibox float-e-margins">
+		            <div class="ibox-title">
+		                <h5>Upload Konfigurasi Jaringan</h5>
+		            </div>
+		            <div class="ibox-content">
+		                <form role="form" class="form-horizontal">
+	                       	<span class="btn btn-default btn-file">
+							    Browse <input type="file">
+							</span>
 		            </div>
 		        </div>
 		    </div>
