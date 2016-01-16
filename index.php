@@ -14,7 +14,6 @@
     <link href="lib/css/animate.css" rel="stylesheet">
     <link href="css/default.css" rel="stylesheet">
     <link href="lib/css/style.css" rel="stylesheet">
-    <link href="lib/css/plugins/switchery/switchery.css" rel="stylesheet">
     
     <link href="lib/css/plugins/summernote/summernote.css" rel="stylesheet">
     <link href="lib/css/plugins/summernote/summernote-bs3.css" rel="stylesheet">
@@ -22,34 +21,14 @@
 </head>
 
 <body >
-    <div class="row border-bottom text-center">
-        <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <ul class="nav navbar-top-links navbar-right">
-                <li>
-                    <span>Notification</span>
-                </li>
-                <li class="dropdown" style="margin-right: 0px !important;">
-                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                        <i class="fa fa-bell"></i>  <span class="label label-primary">8</span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-alerts">
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-envelope fa-fw"></i> You have 16 messages
-                                    <span class="pull-right text-muted small">4 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-    </div>
     <?php 
         if(isset($_GET['page'])) {
             if ($_GET['page'] == 'VSAT') {
                 include("form/VSAT.php");
+            } else if ($_GET['page'] == 'WIRELESS') {
+                include("form/WIRELESS.php");
+            } else if ($_GET['page'] == 'WIRELINE') {
+                include("form/WIRELINE.php");
             }
         } else {
     ?>
@@ -60,8 +39,8 @@
                     <div><img src="images/logo.png" class="img-responsive"></div>
                     <h3>Operation and Maintenance</h3>
                     <button class="btn btn-primary dim btn-large-dim" style="width: 100%;" type="button" onclick="window.location.href = '?page=VSAT'"><i class="fa fa- fa-paper-plane-o"></i> VSAT</button>
-                    <button class="btn btn-warning dim btn-large-dim" style="width: 100%;" type="button"><i class="fa fa-wifi"></i> Wireless</button>
-                    <button class="btn btn-danger  dim btn-large-dim" style="width: 100%;" type="button"><i class="fa fa-plug"></i> Wireline</button>
+                    <button class="btn btn-warning dim btn-large-dim" style="width: 100%;" type="button" onclick="window.location.href = '?page=WIRELESS'"><i class="fa fa-wifi"></i> Wireless</button>
+                    <button class="btn btn-danger  dim btn-large-dim" style="width: 100%;" type="button" onclick="window.location.href = '?page=WIRELINE'"><i class="fa fa-plug"></i> Wireline</button>
                 </div>
             </div>
         </div>
@@ -72,11 +51,10 @@
     <!-- Mainly scripts -->
     <script src="lib/js/jquery-2.1.1.js"></script>
     <script src="lib/js/bootstrap.min.js"></script>
-    <!-- Switchery -->
-    <script src="lib/js/plugins/switchery/switchery.js"></script>
-    <script src="js/main.js"></script>
     <!-- SUMMERNOTE -->
     <script src="lib/js/plugins/summernote/summernote.min.js"></script>
+    <!-- Main JS -->
+    <script src="js/main.js"></script>
 
 </body>
 

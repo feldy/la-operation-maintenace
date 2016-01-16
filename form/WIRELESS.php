@@ -16,7 +16,7 @@
 
 <div class="row  border-bottom white-bg dashboard-header">
     <div class="col-sm-12">
-        <h2>Maintenance Remote VSAT | Step <?php echo $caption;?></h2>
+        <h2>Maintenance Remote Wireless | Step <?php echo $caption;?></h2>
         <small><a href="index.php"><i class="fa fa-home"></i> Kembali Ke Menu Utama</a></small>
     </div>
 </div>
@@ -349,11 +349,23 @@
 			                        	<div id="tab-7" class="tab-pane active">
 			                        		<div class="form-group">
 						                    	<label>Type Mounting</label>
-						                        <select class="form-control m-b" name="account">
-				                                    <option>Standart/NPM</option>
-				                                    <option>Special</option>
-				                                    <option>Wall Mount</option>
+						                        <select class="form-control m-b" name="">
+				                                    <option>Monopole</option>
+				                                    <option>Triangle</option>
+				                                    <option>Tower</option>
 				                                    <option>Lainnya</option>
+				                                </select>
+						                    </div>
+						                    <div class="form-group">
+						                    	<label>Tinggi Mounting</label>
+						                        <div class="input-group"><input type="text" class="form-control"> <span class="input-group-addon">Meter</span></div>
+						                    </div>
+						                    <div class="form-group">
+						                    	<label>Type Penangkal Petir</label>
+						                        <select class="form-control m-b" name="">
+				                                    <option>Aktif</option>
+				                                    <option>Pasif</option>
+				                                    <option>N/A</option>
 				                                </select>
 						                    </div>
 			                        	</div>
@@ -372,16 +384,7 @@
 					                            </thead>
 					                            <tbody>
 						                            <tr>
-						                                <td style="vertical-align: middle; ">Mounting Standard/NPM terbounding dengan Ground</td>
-						                                <td style="vertical-align: middle; text-align: right;">
-						                                	<div data-toggle="buttons" class="btn-group">
-						                                        <label class="btn btn-sm btn-white active"> <input type="radio" id="" name="">  Ya, Kencang</label>
-						                                        <label class="btn btn-sm btn-white"> <input type="radio" id="" name=""> Tidak </label>
-						                                    </div>
-							                            </td>
-						                            </tr>
-						                            <tr>
-						                                <td style="vertical-align: middle; ">Ballast Terpasang pada mounting Standard/NPM</td>
+						                                <td style="vertical-align: middle; ">Center of Grafity Canester = 0&deg; (Tegak Lurus)</td>
 						                                <td style="vertical-align: middle; text-align: right;">
 						                                	<div data-toggle="buttons" class="btn-group">
 						                                        <label class="btn btn-sm btn-white active"> <input type="radio" id="" name="">  Ya</label>
@@ -390,7 +393,16 @@
 							                            </td>
 						                            </tr>
 						                            <tr>
-						                                <td style="vertical-align: middle; ">Center of Grafity Canester = 0&deg; (Tegak Lurus)</td>
+						                                <td style="vertical-align: middle; ">Disekitar Mounting Terdapat Penangkal Petir</td>
+						                                <td style="vertical-align: middle; text-align: right;">
+						                                	<div data-toggle="buttons" class="btn-group">
+						                                        <label class="btn btn-sm btn-white active"> <input type="radio" id="" name="">  Ya</label>
+						                                        <label class="btn btn-sm btn-white"> <input type="radio" id="" name=""> Tidak </label>
+						                                    </div>
+							                            </td>
+						                            </tr>
+						                            <tr>
+						                                <td style="vertical-align: middle; ">Sudut Mounting Terhadap Penangkal Petir < 45&deg;</td>
 						                                <td style="vertical-align: middle; text-align: right;">
 						                                	<div data-toggle="buttons" class="btn-group">
 						                                        <label class="btn btn-sm btn-white active"> <input type="radio" id="" name="">  Ya</label>
@@ -434,12 +446,12 @@
 				                                </select>
 						                    </div>
 						                    <div class="form-group">
-						                    	<label>Azimuth</label>
-						                        <div class="input-group"><input type="text" class="form-control"> <span class="input-group-addon">&deg;</span></div>
+						                    	<label>Altitude</label>
+						                        <div class="input-group"><input type="text" class="form-control"> <span class="input-group-addon">Mdpl</span></div>
 						                    </div>
 						                    <div class="form-group">
 						                    	<label>Elevasi</label>
-						                        <div class="input-group"><input type="text" class="form-control"> <span class="input-group-addon">&deg;</span></div>
+						                        <input type="text" class="form-control">
 						                    </div>
 			                        	</div>
 			                        	<div id="tab-10" class="tab-pane ">
@@ -457,28 +469,10 @@
 					                            </thead>
 					                            <tbody>
 						                            <tr>
-						                                <td style="vertical-align: middle; ">Reflector tidak Lobang, Kotor dan Kencang</td>
-						                                <td style="vertical-align: middle; text-align: right;">
+						                                <td style="vertical-align: middle; ">Posisi Antena Sejajar Dengan Permukaan AIR</td>
+						                                <td width="50%" style="vertical-align: middle; text-align: right;">
 						                                	<div data-toggle="buttons" class="btn-group">
 						                                        <label class="btn btn-sm btn-white active"> <input type="radio" id="" name="">  Ya </label>
-						                                        <label class="btn btn-sm btn-white"> <input type="radio" id="" name=""> Tidak </label>
-						                                    </div>
-							                            </td>
-						                            </tr>
-						                            <tr>
-						                                <td style="vertical-align: middle; ">Feed Support tidak Berkarat dan Kencang</td>
-						                                <td style="vertical-align: middle; text-align: right;">
-						                                	<div data-toggle="buttons" class="btn-group">
-						                                        <label class="btn btn-sm btn-white active"> <input type="radio" id="" name="">  Ya</label>
-						                                        <label class="btn btn-sm btn-white"> <input type="radio" id="" name=""> Tidak </label>
-						                                    </div>
-							                            </td>
-						                            </tr>
-						                            <tr>
-						                                <td style="vertical-align: middle; ">Feed Horn Tidak Bocor dan Tidak Berembun</td>
-						                                <td style="vertical-align: middle; text-align: right;">
-						                                	<div data-toggle="buttons" class="btn-group">
-						                                        <label class="btn btn-sm btn-white active"> <input type="radio" id="" name="">  Ya</label>
 						                                        <label class="btn btn-sm btn-white"> <input type="radio" id="" name=""> Tidak </label>
 						                                    </div>
 							                            </td>
@@ -533,10 +527,10 @@
 			                        		<table class="table">
 					                            <thead>
 						                            <tr>
-						                                <td width="50%" style="vertical-align: middle; ">Splicing Konektor kabel IFL di Antena</td>
-						                                <td width="50%" style="vertical-align: middle; text-align: right;">
+						                                <td style="vertical-align: middle; ">Terpasan Arrestor & Terhubung dengan Ground</td>
+						                                <td style="vertical-align: middle; text-align: right;">
 						                                	<div data-toggle="buttons" class="btn-group">
-						                                        <label class="btn btn-sm btn-white active"> <input type="radio" id="" name="">  Rapat, Baik</label>
+						                                        <label class="btn btn-sm btn-white active"> <input type="radio" id="" name="">  Ya, Kencang </label>
 						                                        <label class="btn btn-sm btn-white"> <input type="radio" id="" name=""> Tidak </label>
 						                                    </div>
 							                            </td>
@@ -544,10 +538,10 @@
 					                            </thead>
 					                            <tbody>
 						                            <tr>
-						                                <td style="vertical-align: middle; ">System RF terbounding dengan Ground</td>
-						                                <td style="vertical-align: middle; text-align: right;">
+						                                <td width="50%" style="vertical-align: middle; ">Splicing Konektor kabel IFL di Antena</td>
+						                                <td width="50%" style="vertical-align: middle; text-align: right;">
 						                                	<div data-toggle="buttons" class="btn-group">
-						                                        <label class="btn btn-sm btn-white active"> <input type="radio" id="" name="">  Ya </label>
+						                                        <label class="btn btn-sm btn-white active"> <input type="radio" id="" name="">  Rapat, Baik</label>
 						                                        <label class="btn btn-sm btn-white"> <input type="radio" id="" name=""> Tidak </label>
 						                                    </div>
 							                            </td>
@@ -574,7 +568,6 @@
 			                        	<label>Temuan Outdoor Area Dan Tindak Lanjut</label>
 			                        	<div class="summernote"></div>
 				                    </div>
-				                    *Hanya untuk mounting standard/NPM (None Penetrating Mounting)
 		                        </div>
 		                    </div>
 					    </div>
