@@ -265,6 +265,8 @@
                                     </tr>
                                     </tbody>
                                 </table>
+                                <br />
+                                <button class="btn btn-primary">Create New Issue</button>
                             </div>
                         </div>
 	        		</div>
