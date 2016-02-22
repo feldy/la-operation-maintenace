@@ -1,0 +1,4 @@
+table rpt_vsat_indoor_area_checklist:
+sid 36 PK
+spk_sid UNIQUE
+tanggal
