@@ -1,24 +1,27 @@
 <?php 
-    include("config/configuration.php");
+    session_start();
+    if (empty($_SESSION['username']) || empty($_SESSION['password']) ) {
+        echo "<script>window.location.href='form/login.php'</script>";
+    } else {
 ?>
 <!DOCTYPE html>
 <html>
-	<head>
+    <head>
 
-	    <meta charset="utf-8">
-	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	    <title>Dashboard Admin</title>
+        <title>Dashboard Admin</title>
 
-	    <link href="../../lib/css/bootstrap.min.css" rel="stylesheet">
-	    <link href="../../lib/font-awesome/css/font-awesome.css" rel="stylesheet">
+        <link href="../../lib/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../lib/font-awesome/css/font-awesome.css" rel="stylesheet">
 
-	    <link href="../../lib/css/animate.css" rel="stylesheet">
-	    <link href="../../css/default.css" rel="stylesheet">
-	    <link href="../../lib/css/style.css" rel="stylesheet">
-	    
-	    <link href="../../lib/css/plugins/summernote/summernote.css" rel="stylesheet">
-	    <link href="../../lib/css/plugins/summernote/summernote-bs3.css" rel="stylesheet">
+        <link href="../../lib/css/animate.css" rel="stylesheet">
+        <link href="../../css/default.css" rel="stylesheet">
+        <link href="../../lib/css/style.css" rel="stylesheet">
+        
+        <link href="../../lib/css/plugins/summernote/summernote.css" rel="stylesheet">
+        <link href="../../lib/css/plugins/summernote/summernote-bs3.css" rel="stylesheet">
         <link href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet">
 
 
@@ -42,18 +45,33 @@
         <!-- EayPIE -->
         <script src="../../lib/js/plugins/easypiechart/jquery.easypiechart.js"></script>
 
-	</head>
-	<body >
+    </head>
+    <body >
+        <?php include("../../config/configuration.php");?>
 	    <?php 
-	        if(isset($_GET['page'])) {
-	            if ($_GET['page'] == 'dashboard') {
-	                include("dashboard.php");
-	            } else if ($_GET['page'] == 'noc') {
-                    include("noc.php");
-                } 
-	        } else {
-	           include("../login.php");
+
+            $role = $_SESSION['role'];
+            if ($role == "admin") {} 
+            else if ($role == "team") {}
+            else if ($role == "manager") {
+                include("dashboard.php");
+            }
+            else if ($role == "noc") {
+                include("noc.php");
+            } else {
+                echo "<script>window.location.href='form/login.php'</script>";
+            }
+            
+	        // if(isset($_GET['page'])) {
+	        //     if ($_GET['page'] == 'dashboard') {
+	        //         include("dashboard.php");
+	        //     } else if ($_GET['page'] == 'noc') {
+         //            include("noc.php");
+         //        } 
+	        // } else {
+	        //    include("../login.php");
+         //    }
 	    ?>	
-	    <?php } ?>
 	</body>
 </html>
+<?php } ?>

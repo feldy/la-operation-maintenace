@@ -2,9 +2,9 @@
     <div class="col-sm-12">
     	<div class="col-sm-10">
     		<p>
-		        <h1 style="">Selamat Datang Kembali</h1>
+                <h1 style="">Selamat Datang Kembali <?php echo $_SESSION['nama'];?> !</h1>
 		        <h4>Dashboard Panel Admin Maintenance</h4>
-		        <small><a href="#"><i class="fa fa-sign-out"></i> Logout</a></small>
+		        <small><a href="../../system/logout.php"><i class="fa fa-sign-out"></i> Logout</a></small>
 	        </p>
     	</div>
     	<div class="col-sm-2">

@@ -7,7 +7,7 @@
 		if ($type == "pelanggan") {
 			$term = $_GET['term'];
 			$a = array();
-			$x = mysql_query("SELECT concat(no_jaringan, ' ( ', nama_pelanggan, ' )') as label, no_jaringan as value  FROM m_pelanggan where no_jaringan like '%$term%' or nama_pelanggan like '%$term%'  order by no_jaringan asc") or die(mysql_error());
+			$x = mysql_query("SELECT concat(no_jaringan, ' ( ', nama_pelanggan, ' )') as label, no_jaringan as value, sid as sid  FROM m_pelanggan where no_jaringan like '%$term%' or nama_pelanggan like '%$term%'  order by no_jaringan asc") or die(mysql_error());
             while ($arr=mysql_fetch_assoc($x)) {
             	$a[] = $arr;
             }
@@ -15,7 +15,7 @@
 		} else if ($type == "team") {
 			$term = $_GET['term'];
 			$a = array();
-			$x = mysql_query("SELECT nama_team as label, nama_team as value  FROM m_team_header where nama_team like '%$term%'  order by nama_team asc") or die(mysql_error());
+			$x = mysql_query("SELECT nama_team as label, nama_team as value, sid as sid   FROM m_team_header where nama_team like '%$term%'  order by nama_team asc") or die(mysql_error());
             while ($arr=mysql_fetch_assoc($x)) {
             	$a[] = $arr;
             }

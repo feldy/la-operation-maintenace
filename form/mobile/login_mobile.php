@@ -8,14 +8,14 @@
 
     <title>Login</title>
 
-   	<link href="../lib/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../lib/font-awesome/css/font-awesome.css" rel="stylesheet">
-    <link href="../lib/css/animate.css" rel="stylesheet">
-    <link href="../lib/css/style.css" rel="stylesheet">
+   	<link href="../../lib/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../lib/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="../../lib/css/animate.css" rel="stylesheet">
+    <link href="../../lib/css/style.css" rel="stylesheet">
 
      <!-- Mainly scripts -->
-    <script src="../lib/js/jquery-2.1.1.js"></script>
-    <script src="../lib/js/bootstrap.min.js"></script>
+    <script src="../../lib/js/jquery-2.1.1.js"></script>
+    <script src="../../lib/js/bootstrap.min.js"></script>
 
 </head>
 
@@ -24,12 +24,12 @@
 		<div>
 		    <div>
 
-		        <h1 class="logo-name"><img src="../images/logo.png" class="img-responsive"></h1>
+		        <h1 class="logo-name"><img src="../../images/logo.png" class="img-responsive"></h1>
 
 		    </div>
 		    <h3>Welcome to LintasArta Apps</h3>
 		    <p>Aplikasi | Integerasi Operator dan Maintenance.</p>
-		    <form method="post" class="m-t" role="form" action="../system/login_security.php">
+		    <form method="post" class="m-t" role="form" action="login_security_mobile.php">
 		        <div class="form-group">
 		            <input type="text" name="username" class="form-control" placeholder="Username" required="">
 		        </div>
