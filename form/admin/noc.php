@@ -16,8 +16,7 @@
 <div class="row" style="padding: 5px;">
     <div  class="wrapper wrapper-content" style="padding: 5px 20px 5px 20px" > 
         <div class="row">
-            <?php if (isset($_GET['form'])) { $form = $_GET['form']; ?>
-            <?php if ($form == "new") { ?>
+            <?php if ((isset($_GET['form'])) && ($_GET['form'] == "new")) { $form = $_GET['form']; ?>
              <div class="col-sm-12">
                 <div class="row">
                     <div class="col-sm-12">
@@ -82,7 +81,7 @@
                     </div>
                 </div>
             </div>
-            <?php }} else { ?>
+            <?php } else { ?>
 	        <div class="col-sm-12">
 	        	<div class="row">
 	        		<div class="col-sm-12">

@@ -2,6 +2,9 @@
 	mysql_connect("localhost","root","admin");
 	mysql_select_db('db_lintas_arta') or die(mysql_error());
 
+	// mysql_connect("mysql.idhostinger.com","u346528017_root","admin");
+	// mysql_select_db('u346528017_la') or die(mysql_error());
+
 
 	function gen_uuid() {
 	    return sprintf( '%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
