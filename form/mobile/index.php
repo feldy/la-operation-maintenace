@@ -1,6 +1,8 @@
 <?php 
+    include("../../config/configuration.php");
+
     session_start();
-    if (empty($_SESSION['username']) || empty($_SESSION['password']) ) {
+    if (empty($_SESSION['username']) || empty($_SESSION['password']) || $_SESSION['role'] != "team" ) {
         echo "<script>window.location.href='login_mobile.php'</script>";
     } else {
 ?>
@@ -28,15 +30,46 @@
 
 <body>
     <?php 
-        if(isset($_GET['page'])) {
-            if ($_GET['page'] == 'VSAT') {
-                include("VSAT.php");
-            } else if ($_GET['page'] == 'WIRELESS') {
-                include("WIRELESS.php");
-            } else if ($_GET['page'] == 'WIRELINE') {
-                include("WIRELINE.php");
+        $role = $_SESSION['role'];
+        if ($role == "team") {
+            //SEARCH TUGAS
+            $id_team = $_SESSION['id_team_header'];
+            $str = "SELECT spk.akses, spk.no_spk, team.nama_team, team.leader, pelanggan.no_jaringan, pelanggan.nama_pelanggan, pelanggan.alamat, pelanggan.no_telepon
+                    FROM t_surat_perintah_kerja spk 
+                    LEFT JOIN m_team_header team ON team.sid = spk.id_team 
+                    LEFT JOIN m_pelanggan pelanggan ON pelanggan.sid = spk.id_pelanggan 
+                    WHERE id_team = '$id_team' 
+                    AND spk.status = 'NEW' 
+                    ORDER BY spk.tanggal asc LIMIT 1 ";
+            $query = mysql_query($str) or die(mysql_error());
+            $query = mysql_fetch_array($query);
+            if ($query) {
+                $akses = $query['akses'];
+                if ($akses == 'VSAT') {
+                    include("VSAT.php");
+                } else if ($akses == 'WIRELESS') {
+                    include("WIRELESS.php");
+                } else if ($akses == 'WIRELINE') {
+                    include("WIRELINE.php");
+                }
+            } else {
+    ?>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="widget red-bg p-lg text-center">
+                    <div class="m-b-md">
+                        <h1 class="m-xs"><i class="fa fa-angellist fa-2x"></i></h1>
+                        <h3 class="font-bold no-margins">
+                            Pemberitahuan
+                        </h3>
+                        <small>Belum ada Tugas Tersedia. :) </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php
             }
-        } else {} 
+        }   
     ?>
 
     <!-- Mainly scripts -->

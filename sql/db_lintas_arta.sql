@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 23, 2016 at 11:37 PM
+-- Generation Time: Feb 25, 2016 at 09:21 PM
 -- Server version: 5.5.47-0ubuntu0.12.04.1
 -- PHP Version: 5.3.10-1ubuntu3.21
 
@@ -85,6 +85,7 @@ CREATE TABLE IF NOT EXISTS `m_team_header` (
 --
 
 INSERT INTO `m_team_header` (`sid`, `nama_team`, `leader`, `tanggal`, `no_handphone`) VALUES
+('0c45f35b-dbc9-11e5-8c66-485b398462d1', 'Quatro 8', 'Endra', '2016-02-25', '0987753656'),
 ('c783bd3e-da38-11e5-9443-485b398462d1', 'Quatro 1', 'Okta Wota', '2016-02-23', '0987654323456');
 
 -- --------------------------------------------------------
@@ -112,6 +113,30 @@ INSERT INTO `m_user` (`sid`, `username`, `password`, `role`, `nama`) VALUES
 ('4b85aa5d-da38-11e5-9443-485b398462d1', 'team', 'team', 'team', 'Robby Zemi'),
 ('88561735-da38-11e5-9443-485b398462d1', 'manager', 'manager', 'manager', 'Agus Supryatna'),
 ('a0bb230e-da38-11e5-9443-485b398462d1', 'noc', 'noc', 'noc', 'Syaiful Epul');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `m_user_team`
+--
+
+CREATE TABLE IF NOT EXISTS `m_user_team` (
+  `sid` varchar(36) NOT NULL,
+  `id_team_header` varchar(36) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `role` varchar(20) NOT NULL,
+  PRIMARY KEY (`sid`),
+  UNIQUE KEY `id_team_header` (`id_team_header`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `m_user_team`
+--
+
+INSERT INTO `m_user_team` (`sid`, `id_team_header`, `username`, `password`, `role`) VALUES
+('3cce788b-dbc9-11e5-8c66-485b398462d1', '0c45f35b-dbc9-11e5-8c66-485b398462d1', 'team_endra', 'team_endra', 'team'),
+('c3a61e4c-db16-11e5-b6e3-485b398462d1', 'c783bd3e-da38-11e5-9443-485b398462d1', 'team', 'team', 'team');
 
 -- --------------------------------------------------------
 
@@ -333,13 +358,25 @@ CREATE TABLE IF NOT EXISTS `t_surat_perintah_kerja` (
   `sid` varchar(36) NOT NULL,
   `no_spk` varchar(20) NOT NULL,
   `id_pelanggan` varchar(36) NOT NULL,
+  `id_team` varchar(36) NOT NULL,
   `tanggal` datetime NOT NULL,
   `cp_nama` varchar(100) NOT NULL,
   `cp_telepon` varchar(20) NOT NULL,
-  `status` varchar(2) NOT NULL,
+  `masalah` varchar(50) NOT NULL,
+  `catatan` text NOT NULL,
+  `akses` varchar(50) NOT NULL,
+  `status` varchar(20) NOT NULL,
   PRIMARY KEY (`sid`),
   UNIQUE KEY `no_spk` (`no_spk`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `t_surat_perintah_kerja`
+--
+
+INSERT INTO `t_surat_perintah_kerja` (`sid`, `no_spk`, `id_pelanggan`, `id_team`, `tanggal`, `cp_nama`, `cp_telepon`, `masalah`, `catatan`, `akses`, `status`) VALUES
+('248d5cc8-7537-4a84-bc29-90d9f661688a', '0002/JAR/2016', '753a4383-da49-11e5-9443-485b398462d1', '0c45f35b-dbc9-11e5-8c66-485b398462d1', '2016-02-24 22:10:29', 'Syaiful', '0987345625362', 'Gak tau', '&lt;p&gt;Gak tau Kenapa&lt;/p&gt;', 'WIRELESS', 'NEW'),
+('85b7fc9c-e4c2-4c6e-9592-3ec06488ef7c', '0001/JAR/2016', '00c9ed29-da39-11e5-9443-485b398462d1', 'c783bd3e-da38-11e5-9443-485b398462d1', '2016-02-24 21:22:05', 'Feldy Yusuf', '98765678767', 'Kena Petir', '&lt;p&gt;cek Kabelnya&lt;/p&gt;', 'VSAT', 'NEW');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

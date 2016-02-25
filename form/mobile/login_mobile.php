@@ -1,3 +1,9 @@
+<?php
+	session_start();
+    if (!empty($_SESSION['username']) && !empty($_SESSION['password']) ) {
+        echo "<script>window.location.href='index.php'</script>";
+    } else {
+?>
 <!DOCTYPE html>
 <html>
 
@@ -28,6 +34,7 @@
 
 		    </div>
 		    <h3>Welcome to LintasArta Apps</h3>
+		    <p>(Mobile)</p>
 		    <p>Aplikasi | Integerasi Operator dan Maintenance.</p>
 		    <form method="post" class="m-t" role="form" action="login_security_mobile.php">
 		        <div class="form-group">
@@ -43,3 +50,4 @@
 	</div>
 </body>
 </hmtl>
+<?php } ?>

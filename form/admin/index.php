@@ -1,6 +1,6 @@
 <?php 
     session_start();
-    if (empty($_SESSION['username']) || empty($_SESSION['password']) ) {
+    if (empty($_SESSION['username']) || empty($_SESSION['password'])) {
         echo "<script>window.location.href='form/login.php'</script>";
     } else {
 ?>

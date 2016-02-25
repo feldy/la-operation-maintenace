@@ -1,11 +1,19 @@
-<?php
-
-?>
-
 <div class="row  border-bottom white-bg dashboard-header">
     <div class="col-sm-12">
+    	<small>
+        	<?php 
+        		echo "No Jaringan: ".$query['no_jaringan']." | ".$query['nama_pelanggan']." | ".$query['alamat']." (".$query['no_telepon'].")";
+        	?>
+    	</small>
         <h2>Maintenance Remote Wireline</h2>
-        <small><a href="index.php"><i class="fa fa-home"></i> Kembali Ke Menu Utama</a></small>
+        <small>
+        	<a href="#">
+        		<i class="fa fa-key"></i> No SPK: <?php echo $query['no_spk'];?> |
+        		<i class="fa fa-group"></i> Nama Team: <?php echo $query['nama_team'];?> |
+        		<i class="fa fa-child	"></i> Leader: <?php echo $query['leader'];?> |
+	        </a>
+        	<a href="logout_mobile.php"><i class="fa fa-sign-out"></i> Logout</a>
+	    </small>
     </div>
 </div>
 <form method="post" action="">

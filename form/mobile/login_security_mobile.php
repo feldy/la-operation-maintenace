@@ -24,7 +24,7 @@
 			$_SESSION['id_team_header'] = $id_team_header;
 			$_SESSION['role'] = $role;
 
-			echo "window.location.href='/';</script>";
+			echo "<script>window.location.href='index.php';</script>";
 		} else {
 			echo "<script> alert('Email atau password anda belum terdaftar, silahkan ulangi kembali! '); window.history.back();</script>";
 		}
