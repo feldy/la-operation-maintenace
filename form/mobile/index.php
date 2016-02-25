@@ -34,7 +34,7 @@
         if ($role == "team") {
             //SEARCH TUGAS
             $id_team = $_SESSION['id_team_header'];
-            $str = "SELECT spk.akses, spk.no_spk, team.nama_team, team.leader, pelanggan.no_jaringan, pelanggan.nama_pelanggan, pelanggan.alamat, pelanggan.no_telepon
+            $str = "SELECT spk.sid as spk_sid, spk.akses, spk.no_spk, team.nama_team, team.leader, pelanggan.no_jaringan, pelanggan.nama_pelanggan, pelanggan.alamat, pelanggan.no_telepon
                     FROM t_surat_perintah_kerja spk 
                     LEFT JOIN m_team_header team ON team.sid = spk.id_team 
                     LEFT JOIN m_pelanggan pelanggan ON pelanggan.sid = spk.id_pelanggan 
@@ -44,6 +44,7 @@
             $query = mysql_query($str) or die(mysql_error());
             $query = mysql_fetch_array($query);
             if ($query) {
+                $SPK_SID = $query['spk_sid'];
                 $akses = $query['akses'];
                 if ($akses == 'VSAT') {
                     include("VSAT.php");

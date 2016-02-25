@@ -30,12 +30,5 @@
 		} else {
 			echo "<script>alert('Gagal Menyimpan Data');window.history.back();</script>";
 		}	
-    } else if (isset($_POST['btn_save_vsat'])) {
-        //generat sid
-        $id = gen_uuid();
-
-                
-    } else if (isset($_POST['btn_save_wireless'])) {
-    } else if (isset($_POST['btn_save_wireline'])) {
     }
 ?>

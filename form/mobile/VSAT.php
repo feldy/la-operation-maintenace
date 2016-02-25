@@ -1,7 +1,63 @@
 <?php
+	//mapping data
+    
+	//inisialisasi
 	$step = 1;
+	$merk_ups = "";
+	$kapasitas_ups = "";
+	$v_output_pn = "";
+	$v_output_pg = "";
+	$v_output_ng = "";
+	$v_output_pn_pg_ng = "";
+	$jenis_ups = "Sinus";
+	$is_menggunakan_ups = 0;
+	$is_bebas_debu = 0;
+	$is_terpasang_groundbar_mdp = 0;
+	$suhu_ruangan = "";
+	$catuan_input_modem = "Tidak Ada";
+	$lokasi_lantai_ruang_rak = "";
+	$is_bertumpuk = 0;
+	$v_input_modem_pn = "";
+	$v_input_modem_ng = "";
+	$is_suhu_casing_panas = 0;
+	$is_terbounding_ke_ground_kencang = 0;
+	$is_splicing_konektor_kabel_ifl = 0;
+	$pemilik_perangkat_cpe = "";
+	$jenis_perangkat_cpe = "";
+	$is_perangkat_cpe_catuan_sama_dengan_modem = 0;
+	$is_perangkat_cpe_bounding_sama_dengan_modem = 0;
+	$temuan_indor_area = "";
+
 	$caption = "1: Indoor Area Checklist";
 	if (isset($_POST['step'])) {
+		//mapping data
+    	$merk_ups = $_POST['merk_ups'];
+    	$kapasitas_ups = $_POST['kapasitas_ups'];
+		$v_output_pn_pg_ng = $_POST['v_output_pn_pg_ng'];
+		$v_output_pn = $_POST['v_output_pn'];
+		$v_output_pg = $_POST['v_output_pg'];
+		$v_output_ng = $_POST['v_output_ng'];
+		$is_menggunakan_ups = $_POST['is_menggunakan_ups'];
+		$jenis_ups = $_POST['jenis_ups'];
+		$is_bebas_debu = $_POST['is_bebas_debu'];
+		$is_terpasang_groundbar_mdp = $_POST['is_terpasang_groundbar_mdp'];
+		$suhu_ruangan = $_POST['suhu_ruangan'];
+		$catuan_input_modem = $_POST['catuan_input_modem'];
+		$lokasi_lantai_ruang_rak = $_POST['lokasi_lantai_ruang_rak'];
+		$is_bertumpuk = $_POST['is_bertumpuk'];
+		$v_input_modem_pn = $_POST['v_input_modem_pn'];
+		$v_input_modem_ng = $_POST['v_input_modem_ng'];
+		$is_suhu_casing_panas = $_POST['is_suhu_casing_panas'];
+		$is_terbounding_ke_ground_kencang = $_POST['is_terbounding_ke_ground_kencang'];
+		$is_splicing_konektor_kabel_ifl = $_POST['is_splicing_konektor_kabel_ifl'];
+		$pemilik_perangkat_cpe = $_POST['pemilik_perangkat_cpe'];
+		$jenis_perangkat_cpe = $_POST['jenis_perangkat_cpe'];
+		$is_perangkat_cpe_catuan_sama_dengan_modem = $_POST['is_perangkat_cpe_catuan_sama_dengan_modem'];
+		$is_perangkat_cpe_bounding_sama_dengan_modem = $_POST['is_perangkat_cpe_bounding_sama_dengan_modem'];
+		$temuan_indor_area = htmlspecialchars($_POST['temuan_indor_area']);
+
+		// echo ">>>>>>>>>>>>>".$jenis_ups;
+		///////////////////////////////////////////////
 		$step = $_POST['step'];
 		if ($step == 2) {
 			$caption = "2. Outdoor Area Checklist";
@@ -10,8 +66,8 @@
 		} else if ($step == 4) {
 			$caption = "4. Data Perangkat Terpasang";
 		}
+		include("crud_impl_mobile.php");
 	}
-
 ?>
 
 <div class="row  border-bottom white-bg dashboard-header">
@@ -53,31 +109,31 @@
 			                        	<div id="tab-1" class="tab-pane active">
 			                        		<div class="form-group">
 						                    	<label>Merk UPS</label>
-						                        <input type="text" placeholder="Merk UPS" id="merkUPS" class="form-control">
+						                        <input type="text" placeholder="Merk UPS" value="<?php echo $merk_ups; ?>" name="merk_ups" class="form-control">
 						                    </div>
 			                        		<div class="form-group">
 						                        <label>Kapasitas UPS</label>
-				                        		<input type="text" placeholder="Kapasitas UPS" id="kapasitasUPS" class="form-control">
+				                        		<input type="text" placeholder="Kapasitas UPS" value="<?php echo $kapasitas_ups; ?>" name="kapasitas_ups" class="form-control">
 						                    </div>
 						                    <div class="form-group">
 				                            	<label>V-Output</label>
 				                    			<div class="row">
 				                    				<div class="col-xs-12">
 							                    		<div class="col-xs-6" style="padding: 2px;">
-				                    						<select class="form-control">
-							                                    <option>PLN/Gedung</option>
-							                                    <option>UPS</option>
-							                                    <option>IT</option>
+				                    						<select class="form-control" name="v_output_pn_pg_ng" >
+							                                    <option value="PLN/Gedung" <?php if ($v_output_pn_pg_ng == "PLN/Gedung") { echo 'selected';} ?>>PLN/Gedung</option>
+							                                    <option value="UPS" <?php if ($v_output_pn_pg_ng == "UPS") { echo 'selected';} ?>>UPS</option>
+							                                    <option value="IT" <?php if ($v_output_pn_pg_ng == "IT") { echo 'selected';} ?>>IT</option>
 							                                </select>
 							                    		</div>
 							                    		<div class="col-xs-2" style="padding: 2px;">
-							                    			<input type="text" placeholder="P-N" class="form-control">
+							                    			<input type="text" placeholder="P-N" class="form-control" name="v_output_pn" value="<?php echo $v_output_pn;?>">
 							                    		</div>
 							                    		<div class="col-xs-2" style="padding: 2px;">
-							                    			<input type="text" placeholder="P-G" class="form-control">
+							                    			<input type="text" placeholder="P-G" class="form-control" name="v_output_pg" value="<?php echo $v_output_pg;?>">
 							                    		</div>
 							                    		<div class="col-xs-2" style="padding: 2px;">
-							                    			<input type="text" placeholder="N-G" class="form-control">
+							                    			<input type="text" placeholder="N-G" class="form-control" name="v_output_ng" value="<?php echo $v_output_ng;?>">
 							                    		</div>
 				                    				</div>
 				                    			</div>
@@ -92,8 +148,8 @@
 						                                <td width="50%" style="vertical-align: middle; ">Menggunakan UPS</td>
 						                                <td width="50%" style="vertical-align: middle; text-align: right;">
 						                                    <div data-toggle="buttons" class="btn-group">
-						                                        <label class="btn btn-sm btn-white"> <input type="radio" id="" name=""> Ya </label>
-						                                        <label class="btn btn-sm btn-white active"> <input type="radio" id="" name=""> Tidak </label>
+						                                        <label class="btn btn-sm btn-white <?php if ($is_menggunakan_ups == 1) {echo "active"; } ?>"> <input <?php if ($is_menggunakan_ups == 1) {echo "checked='checked'"; } ?> type="radio" value=1 name="is_menggunakan_ups"> Ya </label>
+						                                        <label class="btn btn-sm btn-white <?php if ($is_menggunakan_ups == 0) {echo "active"; } ?>"> <input <?php if ($is_menggunakan_ups == 0) {echo "checked='checked'"; } ?> type="radio" value=0 name="is_menggunakan_ups"> Tidak </label>
 						                                    </div>
 							                            </td>
 						                            </tr>
@@ -103,8 +159,8 @@
 						                                <td style="vertical-align: middle; ">Jenis UPS</td>
 						                                <td style="vertical-align: middle; text-align: right;">
 						                                    <div data-toggle="buttons" class="btn-group">
-						                                        <label class="btn btn-sm btn-white"> <input type="radio" id="" name=""> Sinus </label>
-						                                        <label class="btn btn-sm btn-white active"> <input type="radio" id="" name=""> Continu </label>
+						                                        <label class="btn btn-sm btn-white <?php if ($jenis_ups == "Sinus") {echo "active"; } ?>"> <input <?php if ($jenis_ups == "Sinus") {echo "checked='checked'"; } ?>  type="radio" value="Sinus" name="jenis_ups"> Sinus </label>
+						                                        <label class="btn btn-sm btn-white <?php if ($jenis_ups == "Continu") {echo "active"; } ?>"> <input <?php if ($jenis_ups == "Continu") {echo "checked='checked'"; } ?>  type="radio" value="Continu" name="jenis_ups"> Continu </label>
 						                                    </div>
 							                            </td>
 						                            </tr>
@@ -112,8 +168,8 @@
 						                                <td style="vertical-align: middle; ">Ruang Bebas Debu</td>
 						                                <td style="vertical-align: middle; text-align: right;">
 						                                    <div data-toggle="buttons" class="btn-group">
-						                                        <label class="btn btn-sm btn-white"> <input type="radio" id="" name=""> Ya </label>
-						                                        <label class="btn btn-sm btn-white active"> <input type="radio" id="" name=""> Tidak </label>
+						                                        <label class="btn btn-sm btn-white <?php if ($is_bebas_debu == 1) {echo "active"; } ?>"> <input <?php if ($is_bebas_debu == 1) {echo "checked='checked'"; } ?> type="radio" value=1 name="is_bebas_debu"> Ya </label>
+						                                        <label class="btn btn-sm btn-white <?php if ($is_bebas_debu == 0) {echo "active"; } ?>"> <input <?php if ($is_bebas_debu == 0) {echo "checked='checked'"; } ?> type="radio" value=0 name="is_bebas_debu"> Tidak </label>
 						                                    </div>
 							                            </td>
 						                            </tr>
@@ -121,15 +177,15 @@
 						                                <td style="vertical-align: middle; ">Terpasang Ground Bar dan Terhubung ke MDP pentanahan</td>
 						                                <td style="vertical-align: middle; text-align: right;">
 						                                    <div data-toggle="buttons" class="btn-group">
-						                                        <label class="btn btn-sm btn-white"> <input type="radio" id="" name=""> Ya </label>
-						                                        <label class="btn btn-sm btn-white active"> <input type="radio" id="" name=""> Tidak </label>
+						                                        <label class="btn btn-sm btn-white <?php if ($is_terpasang_groundbar_mdp == 1) {echo "active"; } ?>"> <input <?php if ($is_terpasang_groundbar_mdp == 1) {echo "checked='checked'"; } ?> type="radio" value=1 name="is_terpasang_groundbar_mdp"> Ya </label>
+						                                        <label class="btn btn-sm btn-white <?php if ($is_terpasang_groundbar_mdp == 0) {echo "active"; } ?>"> <input <?php if ($is_terpasang_groundbar_mdp == 0) {echo "checked='checked'"; } ?> type="radio" value=0 name="is_terpasang_groundbar_mdp"> Tidak </label>
 						                                    </div>
 							                            </td>
 						                            </tr>
 						                            <tr>
 						                                <td style="vertical-align: middle; ">Suhu Ruangan ( < 26 Derajat )</td>
 						                                <td style="vertical-align: middle; text-align: right;">
-						                                	<div class="input-group"><input type="text" class="form-control"> <span class="input-group-addon">Celcuis</span></div>
+						                                	<div class="input-group"><input type="text" class="form-control" name="suhu_ruangan" value="<?php echo $suhu_ruangan;?>"> <span class="input-group-addon">Celcuis</span></div>
 							                            </td>
 						                            </tr>
 					                            </tbody>
@@ -162,16 +218,16 @@
 			                        	<div id="tab-3" class="tab-pane active">
 			                        		<div class="form-group">
 						                    	<label>Catuan Input Modem</label>
-						                        <select class="form-control m-b" name="account">
-				                                    <option>Tidak Ada</option>
-				                                    <option>IT</option>
-				                                    <option>UPS</option>
-				                                    <option>Stabilizer</option>
+						                        <select class="form-control m-b" name="catuan_input_modem">
+				                                    <option value="Tidak Ada" <?php if ($catuan_input_modem == "Tidak Ada") { echo 'selected';} ?>>Tidak Ada</option>
+				                                    <option value="IT" <?php if ($catuan_input_modem == "IT") { echo 'selected';} ?>>IT</option>
+				                                    <option value="UPS" <?php if ($catuan_input_modem == "UPS") { echo 'selected';} ?>>UPS</option>
+				                                    <option value="Stabilizer" <?php if ($catuan_input_modem == "Stabilizer") { echo 'selected';} ?>>Stabilizer</option>
 				                                </select>
 						                    </div>
 						                    <div class="form-group">
 						                    	<label>Lokasi (Lantai, Ruang, Rack)</label>
-						                        <input type="text" id="" class="form-control">
+						                        <input type="text" name="lokasi_lantai_ruang_rak" value="<?php echo "$lokasi_lantai_ruang_rak";?>" class="form-control">
 						                    </div>
 						                     <div class="form-group">
 				                    			<div class="row">
@@ -181,8 +237,8 @@
 							                    		</div>
 							                    		<div class="col-xs-6" style="padding: 2px; text-align: right;">
 							                    			<div data-toggle="buttons" class="btn-group">
-						                                        <label class="btn btn-sm btn-white"> <input type="radio" id="" name=""> Ya </label>
-						                                        <label class="btn btn-sm btn-white active"> <input type="radio" id="" name=""> Tidak </label>
+						                                        <label class="btn btn-sm btn-white <?php if ($is_bertumpuk == 1) {echo "active"; } ?>"> <input <?php if ($is_bertumpuk == 1) {echo "checked='checked'"; } ?> type="radio" value=1 name="is_bertumpuk"> Ya </label>
+						                                        <label class="btn btn-sm btn-white <?php if ($is_bertumpuk == 0) {echo "active"; } ?>"> <input <?php if ($is_bertumpuk == 0) {echo "checked='checked'"; } ?> type="radio" value=0 name="is_bertumpuk"> Tidak </label>
 						                                    </div>
 							                    		</div>
 				                    				</div>
@@ -195,7 +251,7 @@
 						                            <tr>
 						                                <td width="50%" style="vertical-align: middle; ">V Input Modem (Phasa - Netral)</td>
 						                                <td width="50%" style="vertical-align: middle; text-align: right;">
-						                                	<div class="input-group"><input type="text" placeholder="Standard (210-230 VAC)" class="form-control"> <span class="input-group-addon">VAC</span></div>
+						                                	<div class="input-group"><input type="text" placeholder="Standard (210-230 VAC)" name="v_input_modem_pn" value="<?php echo "$v_input_modem_pn";?>" class="form-control"> <span class="input-group-addon">VAC</span></div>
 							                            </td>
 						                            </tr>
 					                            </thead>
@@ -203,15 +259,15 @@
 						                            <tr>
 						                                <td style="vertical-align: middle; ">V Input Modem (Netral - Ground)</td>
 						                                <td style="vertical-align: middle; text-align: right;">
-						                                	<div class="input-group"><input type="text" placeholder="Standard (< 1 VAC)" class="form-control"> <span class="input-group-addon">VAC</span></div>
+						                                	<div class="input-group"><input type="text" placeholder="Standard (< 1 VAC)" name="v_input_modem_ng" value="<?php echo "$v_input_modem_ng";?>" class="form-control"> <span class="input-group-addon">VAC</span></div>
 							                            </td>
 						                            </tr>
 						                            <tr>
 						                                <td style="vertical-align: middle; ">Suhu Casing Modem</td>
 						                                <td style="vertical-align: middle; text-align: right;">
 						                                    <div data-toggle="buttons" class="btn-group">
-						                                        <label class="btn btn-sm btn-white"> <input type="radio" id="" name="">  Panas</label>
-						                                        <label class="btn btn-sm btn-white active"> <input type="radio" id="" name=""> Tidak </label>
+						                                        <label class="btn btn-sm btn-white <?php if ($is_suhu_casing_panas == 1) {echo "active"; } ?>"> <input <?php if ($is_suhu_casing_panas == 1) {echo "checked='checked'"; } ?> type="radio" value=1 name="is_suhu_casing_panas"> Panas </label>
+						                                        <label class="btn btn-sm btn-white <?php if ($is_suhu_casing_panas == 0) {echo "active"; } ?>"> <input <?php if ($is_suhu_casing_panas == 0) {echo "checked='checked'"; } ?> type="radio" value=0 name="is_suhu_casing_panas"> Tidak </label>
 						                                    </div>
 							                            </td>
 						                            </tr>
@@ -219,8 +275,8 @@
 						                                <td style="vertical-align: middle; ">Catuan Input Terbounding ke Ground</td>
 						                                <td style="vertical-align: middle; text-align: right;">
 						                                    <div data-toggle="buttons" class="btn-group">
-						                                        <label class="btn btn-sm btn-white"> <input type="radio" id="" name=""> Kencang </label>
-						                                        <label class="btn btn-sm btn-white active"> <input type="radio" id="" name=""> Tidak </label>
+						                                        <label class="btn btn-sm btn-white <?php if ($is_terbounding_ke_ground_kencang == 1) {echo "active"; } ?>"> <input <?php if ($is_terbounding_ke_ground_kencang == 1) {echo "checked='checked'"; } ?> type="radio" value=1 name="is_terbounding_ke_ground_kencang"> Kencang </label>
+						                                        <label class="btn btn-sm btn-white <?php if ($is_terbounding_ke_ground_kencang == 0) {echo "active"; } ?>"> <input <?php if ($is_terbounding_ke_ground_kencang == 0) {echo "checked='checked'"; } ?> type="radio" value=0 name="is_terbounding_ke_ground_kencang"> Tidak </label>
 						                                    </div>
 							                            </td>
 						                            </tr>
@@ -228,8 +284,8 @@
 						                                <td style="vertical-align: middle; ">Splicing Konektor kabel IFL di modem</td>
 						                                <td style="vertical-align: middle; text-align: right;">
 						                                    <div data-toggle="buttons" class="btn-group">
-						                                        <label class="btn btn-sm btn-white"> <input type="radio" id="" name=""> Baik </label>
-						                                        <label class="btn btn-sm btn-white active"> <input type="radio" id="" name=""> Tidak </label>
+						                                        <label class="btn btn-sm btn-white <?php if ($is_splicing_konektor_kabel_ifl == 1) {echo "active"; } ?>"> <input <?php if ($is_splicing_konektor_kabel_ifl == 1) {echo "checked='checked'"; } ?> type="radio" value=1 name="is_splicing_konektor_kabel_ifl"> Baik </label>
+																<label class="btn btn-sm btn-white <?php if ($is_splicing_konektor_kabel_ifl == 0) {echo "active"; } ?>"> <input <?php if ($is_splicing_konektor_kabel_ifl == 0) {echo "checked='checked'"; } ?> type="radio" value=0 name="is_splicing_konektor_kabel_ifl"> Tidak </label>
 						                                    </div>
 							                            </td>
 						                            </tr>
@@ -263,14 +319,14 @@
 			                        	<div id="tab-5" class="tab-pane active">
 			                        		<div class="form-group">
 						                    	<label>Pemilik Perangkat CPE</label>
-						                        <select class="form-control m-b" name="account">
-				                                    <option>Pelanggan</option>
-				                                    <option>Lintas Arta</option>
+						                        <select class="form-control m-b" name="pemilik_perangkat_cpe">
+				                                    <option value="Pelanggan" <?php if ($pemilik_perangkat_cpe == "Pelanggan") { echo 'selected';} ?>>Pelanggan</option>
+				                                    <option value="Lintas Arta" <?php if ($pemilik_perangkat_cpe == "Lintas Arta") { echo 'selected';} ?>>Lintas Arta</option>
 				                                </select>
 						                    </div>
 						                    <div class="form-group">
 						                    	<label>Jenis Perangkat CPE</label>
-						                        <input type="text" id="" class="form-control">
+						                        <input type="text" name="jenis_perangkat_cpe" value="<?php echo $jenis_perangkat_cpe;?>" class="form-control">
 						                    </div>
 			                        	</div>
 			                        	<div id="tab-6" class="tab-pane ">
@@ -280,8 +336,8 @@
 						                                <td width="50%" style="vertical-align: middle; ">Perangkat CPE mendapat catuan sama dengan modem</td>
 						                                <td width="50%" style="vertical-align: middle; text-align: right;">
 						                                	<div data-toggle="buttons" class="btn-group">
-						                                        <label class="btn btn-sm btn-white"> <input type="radio" id="" name="">  Ya</label>
-						                                        <label class="btn btn-sm btn-white active"> <input type="radio" id="" name=""> Tidak </label>
+						                                        <label class="btn btn-sm btn-white <?php if ($is_perangkat_cpe_catuan_sama_dengan_modem == 1) {echo "active"; } ?>"> <input <?php if ($is_perangkat_cpe_catuan_sama_dengan_modem == 1) {echo "checked='checked'"; } ?> type="radio" value=1 name="is_perangkat_cpe_catuan_sama_dengan_modem"> Ya </label>
+						                                        <label class="btn btn-sm btn-white <?php if ($is_perangkat_cpe_catuan_sama_dengan_modem == 0) {echo "active"; } ?>"> <input <?php if ($is_perangkat_cpe_catuan_sama_dengan_modem == 0) {echo "checked='checked'"; } ?> type="radio" value=0 name="is_perangkat_cpe_catuan_sama_dengan_modem"> Tidak </label>
 						                                    </div>
 							                            </td>
 						                            </tr>
@@ -291,8 +347,8 @@
 						                                <td style="vertical-align: middle; ">Perangkat CPE terbounding dalam 1 ground yang sama dengan Modem</td>
 						                                <td style="vertical-align: middle; text-align: right;">
 						                                	<div data-toggle="buttons" class="btn-group">
-						                                        <label class="btn btn-sm btn-white"> <input type="radio" id="" name="">  Ya, Kencang</label>
-						                                        <label class="btn btn-sm btn-white active"> <input type="radio" id="" name=""> Tidak </label>
+						                                        <label class="btn btn-sm btn-white <?php if ($is_perangkat_cpe_bounding_sama_dengan_modem == 1) {echo "active"; } ?>"> <input <?php if ($is_perangkat_cpe_bounding_sama_dengan_modem == 1) {echo "checked='checked'"; } ?> type="radio" value=1 name="is_perangkat_cpe_bounding_sama_dengan_modem"> Ya, Kencang </label>
+						                                        <label class="btn btn-sm btn-white <?php if ($is_perangkat_cpe_bounding_sama_dengan_modem == 0) {echo "active"; } ?>"> <input <?php if ($is_perangkat_cpe_bounding_sama_dengan_modem == 0) {echo "checked='checked'"; } ?> type="radio" value=0 name="is_perangkat_cpe_bounding_sama_dengan_modem"> Tidak </label>
 						                                    </div>
 							                            </td>
 						                            </tr>
@@ -316,7 +372,7 @@
 		                        <div class="panel-body">
 		                            <div class="form-group">
 			                        	<label>Temuan Indor Area Dan Tindak Lanjut</label>
-			                        	<div class="summernote"></div>
+			                        	<textarea class="summernote" name="temuan_indor_area"><?php echo $temuan_indor_area; ?></textarea>
 				                    </div>
 		                        </div>
 		                    </div>
@@ -765,7 +821,7 @@
 					    <div class="col-sm-12">
 					    	<div class="panel blank-panel">
 		                        <div class="panel-body" style="padding: 0px;">
-									<button type="submit" name="step" value="4" class="btn btn-primary btn-lg btn-block">Next</button><br />
+									<button type="submit" name="step" value="btn_save_vsat" class="btn btn-primary btn-lg btn-block">Save</button><br />
 		                        </div>
 		                    </div>
 						</div>

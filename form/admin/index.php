@@ -49,7 +49,6 @@
     <body >
         <?php include("../../config/configuration.php");?>
 	    <?php 
-
             $role = $_SESSION['role'];
             if ($role == "admin") {} 
             else if ($role == "team") {}
@@ -61,16 +60,6 @@
             } else {
                 echo "<script>window.location.href='form/login.php'</script>";
             }
-            
-	        // if(isset($_GET['page'])) {
-	        //     if ($_GET['page'] == 'dashboard') {
-	        //         include("dashboard.php");
-	        //     } else if ($_GET['page'] == 'noc') {
-         //            include("noc.php");
-         //        } 
-	        // } else {
-	        //    include("../login.php");
-         //    }
 	    ?>	
 	</body>
 </html>
