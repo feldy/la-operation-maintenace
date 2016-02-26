@@ -4,7 +4,7 @@
     	//generat sid
     	$id = gen_uuid();
 
-    	//search nomor paling terakhir spk.
+    	//search nomor paling terakhir spk
     	$nilai_terakhir = mysql_query("SELECT COALESCE(MAX(LEFT(no_spk, 4)+0), 0) as nilai_terakhir FROM t_surat_perintah_kerja") or die(mysql_error());
     	$nilai_terakhir = mysql_fetch_array($nilai_terakhir);
     	$nilai_terakhir = $nilai_terakhir['nilai_terakhir'];
