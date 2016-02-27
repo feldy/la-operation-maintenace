@@ -16,53 +16,89 @@
 	<div  class="wrapper wrapper-content" style="padding: 5px 20px 5px 20px" > 
 		<div class="row">
             <div class="col-sm-3">
+                <?php 
+                    $str0 = "SELECT count(*) as jumlah_laporan FROM t_surat_perintah_kerja spk WHERE spk.akses = 'VSAT' AND DATE_FORMAT(spk.tanggal, '%d/%m/%Y') = DATE_FORMAT(now(), '%d/%m/%Y') and spk.status = 'NEW'";
+                    $str0 = mysqli_query($conn, $str0) or die(mysqli_error());
+                    $str0 = mysqli_fetch_array($str0);
+
+                    $str1 = "SELECT count(*) as jumlah_laporan FROM t_surat_perintah_kerja spk WHERE spk.akses = 'VSAT' AND DATE_FORMAT(spk.tanggal, '%d/%m/%Y') = DATE_FORMAT(now(), '%d/%m/%Y')";
+                    $str1 = mysqli_query($conn, $str1) or die(mysqli_error());
+                    $str1 = mysqli_fetch_array($str1);
+                ?>
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <span class="label label-danger pull-right">Pending</span>
-                        <h5>Laporan Masuk</h5>
+                        <span class="label label-danger pull-right">VSAT</span>
+                        <h5>Laporan Inprogress</h5>
                     </div>
                     <div class="ibox-content">
-                        <h1 class="no-margins">4.186</h1>
-                        <small>Laporan Bermasalah</small>
+                        <h1 class="no-margins"><?php echo number_format($str0['jumlah_laporan']);?></h1>
+                        <small>Dari <strong><?php echo number_format($str1['jumlah_laporan']);?></strong> Laporan Hari ini</small>
                     </div>
                 </div>
             </div>
             <div class="col-sm-3">
+                <?php 
+                    $str0 = "SELECT count(*) as jumlah_laporan FROM t_surat_perintah_kerja spk WHERE spk.akses = 'WIRELESS' AND DATE_FORMAT(spk.tanggal, '%d/%m/%Y') = DATE_FORMAT(now(), '%d/%m/%Y') and spk.status = 'NEW'";
+                    $str0 = mysqli_query($conn, $str0) or die(mysqli_error());
+                    $str0 = mysqli_fetch_array($str0);
+
+                    $str1 = "SELECT count(*) as jumlah_laporan FROM t_surat_perintah_kerja spk WHERE spk.akses = 'WIRELESS' AND DATE_FORMAT(spk.tanggal, '%d/%m/%Y') = DATE_FORMAT(now(), '%d/%m/%Y')";
+                    $str1 = mysqli_query($conn, $str1) or die(mysqli_error());
+                    $str1 = mysqli_fetch_array($str1);
+                ?>
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <span class="label label-info pull-right">In Progress</span>
-                        <h5>Sedang Diperbaiki</h5>
+                        <span class="label label-info pull-right">Wireless</span>
+                        <h5>Laporan Inprogress</h5>
                     </div>
                     <div class="ibox-content">
-                        <h1 class="no-margins">275</h1>
-                        <small>Progress</small>
+                        <h1 class="no-margins"><?php echo number_format($str0['jumlah_laporan']);?></h1>
+                        <small>Dari <strong><?php echo number_format($str1['jumlah_laporan']);?></strong> Laporan Hari ini</small>
                     </div>
                 </div>
             </div>
             <div class="col-sm-3">
+                <?php 
+                    $str0 = "SELECT count(*) as jumlah_laporan FROM t_surat_perintah_kerja spk WHERE spk.akses = 'WIRELINE' AND DATE_FORMAT(spk.tanggal, '%d/%m/%Y') = DATE_FORMAT(now(), '%d/%m/%Y') and spk.status = 'NEW'";
+                    $str0 = mysqli_query($conn, $str0) or die(mysqli_error());
+                    $str0 = mysqli_fetch_array($str0);
+
+                    $str1 = "SELECT count(*) as jumlah_laporan FROM t_surat_perintah_kerja spk WHERE spk.akses = 'WIRELINE' AND DATE_FORMAT(spk.tanggal, '%d/%m/%Y') = DATE_FORMAT(now(), '%d/%m/%Y')";
+                    $str1 = mysqli_query($conn, $str1) or die(mysqli_error());
+                    $str1 = mysqli_fetch_array($str1);
+                ?>
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <span class="label  label-success pull-right">Done</span>
-                        <h5>Selesai Diperbaiki</h5>
+                        <span class="label  label-success pull-right">Wireline</span>
+                        <h5>Laporan Inprogress</h5>
                     </div>
                     <div class="ibox-content">
-                        <h1 class="no-margins">106</h1>
-                        <small>Permasalahan</small>
+                        <h1 class="no-margins"><?php echo number_format($str0['jumlah_laporan']);?></h1>
+                        <small>Dari <strong><?php echo number_format($str1['jumlah_laporan']);?></strong> Laporan Hari ini</small>
                     </div>
                 </div>
             </div>
             <div class="col-sm-3">
-	            <div class="ibox float-e-margins">
-	                <div class="ibox-title">
-	                    <span class="label label-primary pull-right">Laporan</span>
-	                    <h5>Total Laporan Masuk</h5>
-	                </div>
-	                <div class="ibox-content">
-	                    <h1 class="no-margins">80,600</h1>
-	                    <small>Laporan Tahun Ini</small>
-	                </div>
-	            </div>
-    		</div>
+                <?php 
+                    $str0 = "SELECT count(*) as jumlah_laporan FROM t_surat_perintah_kerja spk WHERE DATE_FORMAT(spk.tanggal, '%d/%m/%Y') = DATE_FORMAT(now(), '%d/%m/%Y') and spk.status = 'INPROGRESS'";
+                    $str0 = mysqli_query($conn, $str0) or die(mysqli_error());
+                    $str0 = mysqli_fetch_array($str0);
+
+                    $str1 = "SELECT count(*) as jumlah_laporan FROM t_surat_perintah_kerja spk WHERE DATE_FORMAT(spk.tanggal, '%d/%m/%Y') = DATE_FORMAT(now(), '%d/%m/%Y') and spk.status = 'NEW'";
+                    $str1 = mysqli_query($conn, $str1) or die(mysqli_error());
+                    $str1 = mysqli_fetch_array($str1);
+                ?>
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+	                    <span class="label label-primary pull-right">Total</span>
+                        <h5>Laporan Selesai</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins"><?php echo number_format($str0['jumlah_laporan']);?></h1>
+                        <small>Total Laporan sedang Inprogress <strong><?php echo number_format($str1['jumlah_laporan']);?></strong> Hari ini</small>
+                    </div>
+                </div>
+            </div>
     	</div>
 		<div class="row">
             <div class="col-sm-12">
@@ -139,53 +175,53 @@
                                     <tr>
                                         <th>Status</th>
                                         <th>Tanggal</th>
+                                        <th>Masalah</th>
+                                        <th>Pelapor</th>
                                         <th>Pelanggan</th>
-                                        <th>Value</th>
+                                        <th>Alamat Pelanggan</th>
+                                        <th>Team Leader</th>
+                                        <th>Team Handling</th>
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    <?php 
+                                        $str = "SELECT  DATE_FORMAT(spk.tanggal, '%d/%m/%Y %h:%i:%s') as tanggal,
+                                                        no_spk, akses, masalah, pel.nama_pelanggan as nama_pelanggan, 
+                                                        pel.alamat as alamat, tim.nama_team as nama_team, spk.status as status,
+                                                        spk.cp_nama as cp_nama, tim.leader as leader, tim.no_handphone as no_hp
+                                                FROM t_surat_perintah_kerja spk 
+                                                LEFT JOIN m_pelanggan pel ON spk.id_pelanggan = pel.sid 
+                                                LEFT JOIN m_team_header tim ON spk.id_team = tim.sid 
+                                                ORDER BY spk.status desc
+                                                ";
+
+                                        // echo $str;
+                                        $result = mysqli_query($conn, $str) or die(mysqli_error());
+                                        while($arr=mysqli_fetch_array($result)) {
+                                            $status = $arr['status'];
+                                            if ($status == "NEW") {
+                                                $status = "<small>In Progress...</small>";
+                                            } else {
+                                                $status = '<span class="label label-primary">Completed</span> ';
+                                            }
+                                    ?>
                                     <tr>
-                                        <td><small>In Progress...</small></td>
-                                        <td><i class="fa fa-clock-o"></i> 11:20pm</td>
-                                        <td>Samantha</td>
-                                        <td class="text-navy"> <i class="fa fa-level-up"></i> 24% </td>
+                                        <td><?php echo $status; ?></td>
+                                        <td><i class="fa fa-clock-o"></i> <?php echo $arr['tanggal']; ?></td>
+                                        <td><?php echo $arr['cp_nama']; ?></td>
+                                        <td><?php echo $arr['masalah']; ?></td>
+                                        <td><?php echo $arr['nama_pelanggan']; ?></td>
+                                        <td><?php echo $arr['alamat']; ?></td>
+                                        <td><?php echo $arr['leader']."(".$arr['no_hp'].")"; ?></td>
+                                        <td class="text-navy"> <a><i class="fa fa-users"></i>&nbsp;<?php echo $arr['nama_team'] ?></a></td>
                                     </tr>
-                                    <tr>
-                                        <td><span class="label label-warning">Canceled</span> </td>
-                                        <td><i class="fa fa-clock-o"></i> 10:40am</td>
-                                        <td>Monica</td>
-                                        <td class="text-navy"> <i class="fa fa-level-up"></i> 66% </td>
-                                    </tr>
-                                    <tr>
-                                        <td><small>In Progress...</small> </td>
-                                        <td><i class="fa fa-clock-o"></i> 01:30pm</td>
-                                        <td>John</td>
-                                        <td class="text-navy"> <i class="fa fa-level-up"></i> 54% </td>
-                                    </tr>
-                                    <tr>
-                                        <td><small>In Progress...</small> </td>
-                                        <td><i class="fa fa-clock-o"></i> 02:20pm</td>
-                                        <td>Agnes</td>
-                                        <td class="text-navy"> <i class="fa fa-level-up"></i> 12% </td>
-                                    </tr>
-                                    <tr>
-                                        <td><small>In Progress...</small> </td>
-                                        <td><i class="fa fa-clock-o"></i> 09:40pm</td>
-                                        <td>Janet</td>
-                                        <td class="text-navy"> <i class="fa fa-level-up"></i> 22% </td>
-                                    </tr>
-                                    <tr>
-                                        <td><span class="label label-primary">Completed</span> </td>
+                                    <?php } ?>
+                                    <!-- <tr>
+                                        <td></td>
                                         <td><i class="fa fa-clock-o"></i> 04:10am</td>
                                         <td>Amelia</td>
                                         <td class="text-navy"> <i class="fa fa-level-up"></i> 66% </td>
-                                    </tr>
-                                    <tr>
-                                        <td><small>In Progress...</small> </td>
-                                        <td><i class="fa fa-clock-o"></i> 12:08am</td>
-                                        <td>Damian</td>
-                                        <td class="text-navy"> <i class="fa fa-level-up"></i> 23% </td>
-                                    </tr>
+                                    </tr> -->
                                     </tbody>
                                 </table>
                             </div>

@@ -50,7 +50,9 @@
         <?php include("../../config/configuration.php");?>
 	    <?php 
             $role = $_SESSION['role'];
-            if ($role == "admin") {} 
+            if ($role == "admin") {
+                include("admin.php");
+            } 
             else if ($role == "team") {}
             else if ($role == "manager") {
                 include("dashboard.php");
