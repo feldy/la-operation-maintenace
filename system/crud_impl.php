@@ -20,7 +20,7 @@
     	$akses = $_POST['akses'];
 
     	//save action
-    	$str = "INSERT INTO t_surat_perintash_kerja (sid, no_spk, id_pelanggan, id_team, tanggal, cp_nama, cp_telepon, masalah, catatan, akses, status) VALUES 
+    	$str = "INSERT INTO t_surat_perintah_kerja (sid, no_spk, id_pelanggan, id_team, tanggal, cp_nama, cp_telepon, masalah, catatan, akses, status) VALUES 
     	('$id', '$nomor_spk', '$id_pelanggan', '$id_team', now(), '$cp_nama', '$cp_telepon', '$masalah', '$catatan', '$akses', 'NEW')";
     	// echo ">>>>".$str;
     	$query = mysqli_query($conn, $str) or die(showDialogUtama("Error!",  mysqli_error($conn), "error", "../form/admin/?page=noc&form=new"));

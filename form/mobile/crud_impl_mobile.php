@@ -69,7 +69,7 @@
         // $query2 = mysqli_query($conn, $str_vsat_2) or die(mysqli_error($conn));
         // $query3 = mysqli_query($conn, $str_vsat_3) or die(mysqli_error($conn));
         // $query4 = mysqli_query($conn, $str_vsat_4) or die(mysqli_error($conn));
-        mysqli_query($conn, "UPDATE t_surat_persintah_kerja SET status = 'INPROGRESS' WHERE sid = '$SPK_SID'") or die(showDialog("Error!",  mysqli_error($conn), "error", "index.php"));
+        mysqli_query($conn, "UPDATE t_surat_perintah_kerja SET status = 'INPROGRESS' WHERE sid = '$SPK_SID'") or die(showDialog("Error!",  mysqli_error($conn), "error", "index.php"));
 
         if ($query1 and $query2 and $query3 and $query4) {
             $isProses = 1;
