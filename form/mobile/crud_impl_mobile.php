@@ -1,5 +1,4 @@
 <?php
-	include("../config/configuration.php");
     // if ($_POST['step'] == "btn_save_vsat") {
         //generat sid
         $id = gen_uuid();

@@ -372,7 +372,8 @@
 		                        <div class="panel-body">
 		                            <div class="form-group">
 			                        	<label>Temuan Indor Area Dan Tindak Lanjut</label>
-			                        	<textarea class="summernote" name="temuan_indor_area"><?php echo $temuan_indor_area; ?></textarea>
+			                        	<textarea class="summernote" name="temuan_indor_area" id="temuan_indor_area"><?php echo $temuan_indor_area; ?></textarea>
+			                        	<input type="hidden" value="<?php echo $temuan_indor_area; ?>" id="temuan_indor_area_hidden" />
 				                    </div>
 		                        </div>
 		                    </div>

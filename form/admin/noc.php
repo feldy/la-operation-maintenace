@@ -120,9 +120,9 @@
                                                 ";
 
                                         // echo $str;
-                                        $result = mysql_query($str) or die(mysql_error());
+                                        $result = mysqli_query($conn, $str) or die(mysqli_error());
 
-                                        while($arr=mysql_fetch_array($result)) {
+                                        while($arr=mysqli_fetch_array($result)) {
                                     ?>
                                     <tr>
                                         <td><i class="fa fa-clock-o"></i> <?php echo $arr['tanggal'] ?></td>

@@ -5,8 +5,8 @@
 		$user = $_POST['username'];
 		$pass = $_POST['password'];
 
-		$sql = mysql_query("SELECT * FROM m_user where username = '$user' and password = '$pass' ");
-		$arr = mysql_fetch_array($sql);
+		$sql = mysqli_query($conn,"SELECT * FROM m_user where username = '$user' and password = '$pass' ");
+		$arr = mysqli_fetch_array($sql);
 
 		$id = $arr['sid'];
 		$password = $arr['password'];

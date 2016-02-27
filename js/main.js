@@ -3,6 +3,9 @@ $(document).ready(function(){
 		toolbar: [				 
 			['style', ['bold', 'italic', 'underline', 'clear']],
 			['style', ['style']]
-		]});
-
+		]
+	});
+	
+	//set value
+	$("#temuan_indor_area").code($("#temuan_indor_area_hidden").val());
 });

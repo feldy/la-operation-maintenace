@@ -1,17 +1,10 @@
 <?php
-	// mysql_connect("localhost","root","admin");
-	// mysql_select_db('db_lintas_arta') or die(mysql_error());
+	error_reporting(E_ALL); 
+	// $conn = mysqli_connect("mysql.idhostinger.com","u346528017_la","admin12345");
+	// mysqli_select_db($conn, 'u346528017_la') or die(mysqli_error($conn));
 
-	// mysql_connect("mysql.idhostinger.com","u346528017_root","admin");
-	// mysql_select_db('u346528017_la') or die(mysql_error());
-
-	// $con = mysqli_connect("mysql.idhostinger.com","u346528017_la","12345","u346528017_la");
-	// $con = mysqli_connect("localhost","root","admin","db_lintas_arta");
-
-	// $conn = mysqli_connect("mysql.idhostinger.com","u246025990_lg","123456");
-	
-	$conn = mysqli_connect("mysql.idhostinger.com","u346528017_la","admin12345");
-	mysqli_select_db($conn, 'u346528017_la') or die(mysqli_error($conn));
+	$conn = mysqli_connect("localhost","root","admin");
+	mysqli_select_db($conn, 'db_lintas_arta') or die(mysqli_error($conn));
 
 	function gen_uuid() {
 	    return sprintf( '%04x%04x-%04x-%04x-%04x-%04x%04x%04x',

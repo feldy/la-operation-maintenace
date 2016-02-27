@@ -5,8 +5,8 @@
     	$id = gen_uuid();
 
     	//search nomor paling terakhir spk
-    	$nilai_terakhir = mysql_query("SELECT COALESCE(MAX(LEFT(no_spk, 4)+0), 0) as nilai_terakhir FROM t_surat_perintah_kerja") or die(mysql_error());
-    	$nilai_terakhir = mysql_fetch_array($nilai_terakhir);
+    	$nilai_terakhir = mysqli_query($conn, "SELECT COALESCE(MAX(LEFT(no_spk, 4)+0), 0) as nilai_terakhir FROM t_surat_perintah_kerja") or die(mysqli_error());
+    	$nilai_terakhir = mysqli_fetch_array($nilai_terakhir);
     	$nilai_terakhir = $nilai_terakhir['nilai_terakhir'];
 
     	// generate nomor spk
@@ -23,7 +23,7 @@
     	$str = "INSERT INTO t_surat_perintah_kerja (sid, no_spk, id_pelanggan, id_team, tanggal, cp_nama, cp_telepon, masalah, catatan, akses, status) VALUES 
     	('$id', '$nomor_spk', '$id_pelanggan', '$id_team', now(), '$cp_nama', '$cp_telepon', '$masalah', '$catatan', '$akses', 'NEW')";
     	// echo ">>>>".$str;
-    	$query = mysql_query($str) or die(mysql_error());
+    	$query = mysqli_query($conn, $str) or die(mysqli_error());
 
     	if ($query) {
 			echo "<script>alert('Berhasil Menyimpan Data'); window.location.href = '../form/admin/?page=noc&form=view';</script>";

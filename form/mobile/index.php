@@ -41,8 +41,8 @@
                     WHERE id_team = '$id_team' 
                     AND spk.status = 'NEW' 
                     ORDER BY spk.tanggal asc LIMIT 1 ";
-            $query = mysql_query($str) or die(mysql_error());
-            $query = mysql_fetch_array($query);
+            $query = mysqli_query($conn, $str) or die(mysqli_error());
+            $query = mysqli_fetch_array($query);
             if ($query) {
                 $SPK_SID = $query['spk_sid'];
                 $akses = $query['akses'];
