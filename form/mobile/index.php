@@ -54,11 +54,6 @@
                     include("WIRELINE.php");
                 }
             } else {
-                die(
-                    // include("../../util/success_message.php")
-                    // include("../../util/failed_message.php")
-                    showDialog("Berhasil", "Selamet Berhasil", "success", "")
-                );
     ?>
 
         <div class="row">
@@ -70,6 +65,7 @@
                             Pemberitahuan
                         </h3>
                         <small>Belum ada Tugas Tersedia. :) </small>
+                        <h3><a href="logout_mobile.php" style="color: white" =""><i class="fa fa-sign-out"></i> Logout</a></h3>
                     </div>
                 </div>
             </div>

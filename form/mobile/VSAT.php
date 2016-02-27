@@ -124,9 +124,20 @@
 				$extension = $_POST['extension'];
 			}
 		}
+		
+		$file_photo_final = "";
+        if (!empty($extension)) {
+            $file_photo_final = $SPK_SID.".".$extension;
+	        if (isset($_FILES['file_photo'])) {
+	            if ($_FILES['file_photo']['error'] == 0) {
+	                move_uploaded_file($_FILES['file_photo']['tmp_name'], '../../upload/photo/'.$file_photo_final);
+	            }
+	        }
+        }
+
 		$catatan = htmlspecialchars($_POST['catatan']);
 		
-		//mapping data step 3
+		//mapping data step 4
 		$existing_nama_barang = $_POST['existing_nama_barang'];
 		$existing_no_reg = $_POST['existing_no_reg'];
 		$existing_serial_number = $_POST['existing_serial_number'];
