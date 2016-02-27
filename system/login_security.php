@@ -30,9 +30,11 @@
 				$halaman = "../form/admin/";
 			}
 
-			echo "<script> alert('Selamat datang ".$nama." ! '); window.location.href='".$halaman."';</script>";
+			// echo "<script> alert(''); window.location.href='".$halaman."';</script>";
+			showDialogUtama("Halo!", "Selamat datang ".$nama." ! ", "success", "../form/admin/");
 		} else {
-			echo "<script> alert('Email atau password anda belum terdaftar, silahkan ulangi kembali! '); window.history.back();</script>";
+			showDialogUtama("Maaf!", "Email atau password anda belum terdaftar, silahkan ulangi kembali!", "error", "../index.php");
+			// echo "<script> alert(' '); window.history.back();</script>";
 		}
 	}
 

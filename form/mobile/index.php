@@ -54,10 +54,16 @@
                     include("WIRELINE.php");
                 }
             } else {
+                die(
+                    // include("../../util/success_message.php")
+                    // include("../../util/failed_message.php")
+                    showDialog("Berhasil", "Selamet Berhasil", "success", "")
+                );
     ?>
+
         <div class="row">
             <div class="col-sm-12">
-                <div class="widget red-bg p-lg text-center">
+                <div class="widget navy-bg p-lg text-center">
                     <div class="m-b-md">
                         <h1 class="m-xs"><i class="fa fa-angellist fa-2x"></i></h1>
                         <h3 class="font-bold no-margins">

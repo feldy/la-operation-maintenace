@@ -20,15 +20,17 @@
     	$akses = $_POST['akses'];
 
     	//save action
-    	$str = "INSERT INTO t_surat_perintah_kerja (sid, no_spk, id_pelanggan, id_team, tanggal, cp_nama, cp_telepon, masalah, catatan, akses, status) VALUES 
+    	$str = "INSERT INTO t_surat_perintash_kerja (sid, no_spk, id_pelanggan, id_team, tanggal, cp_nama, cp_telepon, masalah, catatan, akses, status) VALUES 
     	('$id', '$nomor_spk', '$id_pelanggan', '$id_team', now(), '$cp_nama', '$cp_telepon', '$masalah', '$catatan', '$akses', 'NEW')";
     	// echo ">>>>".$str;
-    	$query = mysqli_query($conn, $str) or die(mysqli_error());
+    	$query = mysqli_query($conn, $str) or die(showDialogUtama("Error!",  mysqli_error($conn), "error", "../form/admin/?page=noc&form=new"));
 
     	if ($query) {
-			echo "<script>alert('Berhasil Menyimpan Data'); window.location.href = '../form/admin/?page=noc&form=view';</script>";
-		} else {
-			echo "<script>alert('Gagal Menyimpan Data');window.history.back();</script>";
+            showDialogUtama("Berhasil", "Data Berhasil disimpan !", "success", "../form/admin/?page=noc&form=view");
+            // echo "<script>alert('Berhasil Menyimpan Data'); window.location.href = '';</script>";
+        } else {
+            showDialogUtama("Maaf!", "Data Gagal Disimpan!", "error", "../form/admin/?page=noc&form=new");
+			// echo "<script>alert('Gagal Menyimpan Data');window.history.back();</script>";
 		}	
     }
 ?>

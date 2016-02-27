@@ -27,5 +27,82 @@
 	        mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff )
 	    );
 	}
-
 ?>
+
+<?php
+    function showDialog($title, $msg, $type, $href) {
+    	$color = "lazur";
+    	$emoticon = "smile";
+    	if ($type == 'error') {
+    		$color = 'red';
+    		$emoticon = "frown";
+    	}
+?>
+<style type="text/css">
+	
+
+</style>
+<link href="../../lib/css/bootstrap.min.css" rel="stylesheet">
+<link href="../../lib/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+<link href="../../lib/css/animate.css" rel="stylesheet">
+<link href="../../css/default.css" rel="stylesheet">
+<link href="../../lib/css/style.css" rel="stylesheet">
+<div class="row animated fadeInRight">
+    <div class="col-sm-12">
+        <div class="widget <?php echo $color;?>-bg p-lg text-center">
+            <div class="m-b-md">
+                <h1 class="m-xs"><i class="fa fa-<?php echo $emoticon; ?>-o fa-2x"></i></h1>
+                <h3 class="font-bold no-margins">
+                    <?php echo $title; ?>
+                </h3>
+                <small><?php echo $msg; ?></small>
+                <?php 
+                	if (!empty($href)) {
+                		echo "<script>setTimeout(function(){window.location.href='".$href."'}, 2500)</script>";
+                	}
+                ?>
+            </div>
+        </div>
+    </div>
+</div>
+<?php } ?>
+
+<?php
+    function showDialogUtama($title, $msg, $type, $href) {
+    	$color = "lazur";
+    	$emoticon = "smile";
+    	if ($type == 'error') {
+    		$color = 'red';
+    		$emoticon = "frown";
+    	}
+?>
+<style type="text/css">
+	
+
+</style>
+<link href="../lib/css/bootstrap.min.css" rel="stylesheet">
+<link href="../lib/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+<link href="../lib/css/animate.css" rel="stylesheet">
+<link href="../css/default.css" rel="stylesheet">
+<link href="../lib/css/style.css" rel="stylesheet">
+<div class="row animated fadeInRight">
+    <div class="col-sm-12">
+        <div class="widget <?php echo $color;?>-bg p-lg text-center">
+            <div class="m-b-md">
+                <h1 class="m-xs"><i class="fa fa-<?php echo $emoticon; ?>-o fa-2x"></i></h1>
+                <h3 class="font-bold no-margins">
+                    <?php echo $title; ?>
+                </h3>
+                <small><?php echo $msg; ?></small>
+                <?php 
+                	if (!empty($href)) {
+                		echo "<script>setTimeout(function(){window.location.href='".$href."'}, 2500)</script>";
+                	}
+                ?>
+            </div>
+        </div>
+    </div>
+</div>
+<?php } ?>
