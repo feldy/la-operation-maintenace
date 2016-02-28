@@ -175,8 +175,8 @@
                                     <tr>
                                         <th>Status</th>
                                         <th>Tanggal</th>
-                                        <th>Masalah</th>
                                         <th>Pelapor</th>
+                                        <th>Masalah</th>
                                         <th>Pelanggan</th>
                                         <th>Alamat Pelanggan</th>
                                         <th>Team Leader</th>

@@ -108,6 +108,7 @@
                                         <th>Akses</th>
                                         <th>Keluhan</th>
                                         <th>Team</th>
+                                        <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -131,7 +132,8 @@
                                         <td><?php echo $arr['alamat'] ?></td>
                                         <td><?php echo $arr['akses'] ?></td>
                                         <td><?php echo $arr['masalah'] ?></td>
-                                        <td class="text-navy"> <a href="#"><i class="fa fa-users"></i>&nbsp;<?php echo $arr['nama_team'] ?></a></td>
+                                        <td> <a><i class="fa fa-users"></i>&nbsp;<?php echo $arr['nama_team'] ?></a></td>
+                                        <td> <a href="#"><i class="fa fa-ban"></i>&nbsp;Cancel ?</a></td>
                                     </tr>
                                     <?php }  ?>
                                     </tbody>
