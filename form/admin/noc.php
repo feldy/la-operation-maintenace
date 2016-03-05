@@ -81,6 +81,18 @@
                     </div>
                 </div>
             </div>
+            <?php } else if ((isset($_GET['form'])) && ($_GET['form'] == "view_detail")) { ?>
+            <?php 
+                $akses = $_GET['akses'];
+                if ($akses == "VSAT") {
+                    include("view_rpt_vsat.php"); 
+                } else if ($akses == "WIRELESS") {
+                    include("view_rpt_wireless.php"); 
+                } else if ($akses == "WIRELINE") {
+                    include("view_rpt_wireline.php"); 
+                }
+                // include("view_rpt_vsat.php"); 
+            ?>
             <?php } else { ?>
 	        <div class="col-sm-12">
 	        	<div class="row">
@@ -98,8 +110,20 @@
                                 </div>
                             </div>
                             <div class="ibox-content">
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="input-group">
+                                            <input type="text" placeholder="Search" class="input-sm form-control" /> 
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-sm btn-primary"> Go!</button> 
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
                                 <table class="table table-hover no-margins">
-                                    <thead>
+                                    <!-- <thead>
                                     <tr>
                                         <th width="160px">Tanggal </th>
                                         <th>No. SPK</th>
@@ -110,14 +134,15 @@
                                         <th>Team</th>
                                         <th></th>
                                     </tr>
-                                    </thead>
+                                    </thead> -->
                                     <tbody>
                                     <?php 
-                                        $str = "SELECT  DATE_FORMAT(spk.tanggal, '%d/%m/%Y %h:%i:%s') as tanggal,
-                                                        no_spk, akses, masalah, pel.nama_pelanggan as nama_pelanggan, pel.alamat as alamat, tim.nama_team as nama_team
+                                        $str = "SELECT  DATE_FORMAT(spk.tanggal, '%d/%m/%Y %h:%i:%s') as tanggal, spk.sid as sid_spk,
+                                                        no_spk, status, akses, masalah, pel.nama_pelanggan as nama_pelanggan, pel.alamat as alamat, tim.nama_team as nama_team, tim.leader as leader
                                                 FROM t_surat_perintah_kerja spk 
                                                 LEFT JOIN m_pelanggan pel ON spk.id_pelanggan = pel.sid 
                                                 LEFT JOIN m_team_header tim ON spk.id_team = tim.sid 
+                                                ORDER BY spk.tanggal desc
                                                 ";
 
                                         // echo $str;
@@ -126,20 +151,40 @@
                                         while($arr=mysqli_fetch_array($result)) {
                                     ?>
                                     <tr>
-                                        <td><i class="fa fa-clock-o"></i> <?php echo $arr['tanggal'] ?></td>
-                                        <td><?php echo $arr['no_spk'] ?></td>
-                                        <td><?php echo $arr['nama_pelanggan'] ?></td>
-                                        <td><?php echo $arr['alamat'] ?></td>
-                                        <td><?php echo $arr['akses'] ?></td>
-                                        <td><?php echo $arr['masalah'] ?></td>
-                                        <td> <a><i class="fa fa-users"></i>&nbsp;<?php echo $arr['nama_team'] ?></a></td>
-                                        <td> <a href="#"><i class="fa fa-ban"></i>&nbsp;Cancel ?</a></td>
+                                        <td class="project-status">
+                                            <span class="label label-primary"><?php echo $arr['akses'] ?></span>
+                                            <br/>
+                                            <small><?php echo $arr['no_spk'] ?></small>
+                                        </td>
+                                        <td class="project-title">
+                                            <a href="#"><?php echo $arr['nama_pelanggan'] ?></a>
+                                            <br/>
+                                            <small><i class="fa fa-clock-o"></i> <?php echo $arr['alamat'] ?></small>
+                                        </td>
+                                        <td class="project-title">
+                                            <a>Keluhan: <?php echo $arr['masalah'] ?></a>
+                                            <br/>
+                                            <small><i class="fa fa-clock-o"></i> <?php echo $arr['tanggal'] ?></small>
+                                        </td>
+                                        <td class="project-status">
+                                            <span class="label label-info">Team: <?php echo $arr['nama_team'] ?></span>
+                                            <br/>
+                                            <small><i class="fa fa-user"></i> <?php echo $arr['leader'] ?></small>
+                                        </td>
+                                        <td class="project-actions">
+                                            <?php if ($arr['status'] == "INPROGRESS") { ?>   
+                                            <a href="?form=view_detail&akses=<?php echo $arr['akses'];?>&sid=<?php echo $arr['sid_spk'];?>" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
+                                            <?php } else { ?>
+                                            <a class="btn btn-warning btn-sm"><i class="fa fa-yelp"></i> Inprogress.. </a>
+                                            <?php } ?>
+                                            <a href="#" class="btn btn-white btn-sm"><i class="fa fa-ban"></i> Cancel </a>
+                                        </td>
                                     </tr>
                                     <?php }  ?>
                                     </tbody>
                                 </table>
                                 <br />
-                                <a class="btn btn-primary" href="?page=noc&form=new">Create New Issue</a>
+                                <a class="btn btn-primary" href="?page=noc&form=new">Create NOC</a>
                             </div>
                         </div>
 	        		</div>

@@ -520,7 +520,7 @@
 						                    	<label>Type Mounting</label>
 						                    	<select class="form-control" name="tipe_mounting" >
 						                    	    <option value="Monopole" <?php if ($tipe_mounting == "Monopole") { echo 'selected';} ?>>Monopole</option>
-						                    	    <option value="Triangle" <?php if ($tipe_mounting == "Triangle") { echo 'selected';} ?>>Triangle</option>
+						                    	    <option value="Wallmount" <?php if ($tipe_mounting == "Wallmount") { echo 'selected';} ?>>Wallmount</option>
 						                    	    <option value="Tower" <?php if ($tipe_mounting == "Tower") { echo 'selected';} ?>>Tower</option>
 						                    	    <option value="Lainnya" <?php if ($tipe_mounting == "Lainnya") { echo 'selected';} ?>>Lainnya</option>
 						                    	</select>

@@ -254,7 +254,7 @@
 							        <div class="panel panel-default">
 							            <div class="panel-heading">
 							                <h4 class="panel-title">
-							                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">Soltem/LJM:</a>
+							                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive">Temuan:</a>
 							                </h4>
 							            </div>
 							            <div id="collapseFive" class="panel-collapse collapse">
@@ -269,7 +269,7 @@
 							        <div class="panel panel-default">
 							            <div class="panel-heading">
 							                <h4 class="panel-title">
-							                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix">Catatan/Gambar Konfigurasi Jaringan:</a>
+							                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix">Gambar Konfigurasi Jaringan:</a>
 							                </h4>
 							            </div>
 							            <div id="collapseSix" class="panel-collapse collapse">
