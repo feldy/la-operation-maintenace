@@ -65,7 +65,7 @@
         $query4 = mysqli_query($conn, $str_vsat_4);
 
         if ($query1 and $query2 and $query3 and $query4) {
-            mysqli_query($conn, "UPDATE t_surat_perintah_kerja SET status = 'INPROGRESS' WHERE sid = '$SPK_SID'") or die(showDialog("Error!",  mysqli_error($conn), "error", "index.php"));
+            mysqli_query($conn, "UPDATE t_surat_perintah_kerja SET status = 'INPROGRESS', access_date = now() WHERE sid = '$SPK_SID'") or die(showDialog("Error!",  mysqli_error($conn), "error", "index.php"));
             $isProses = 1;
             showDialog("Berhasil", "Data Berhasil disimpan !", "success", "index.php");
         } else {
@@ -137,7 +137,7 @@
             $query4 = mysqli_query($conn, $str_wireless_4);
 
             if ($query1 and $query2 and $query3 and $query4) {
-                mysqli_query($conn, "UPDATE t_surat_perintah_kerja SET status = 'INPROGRESS' WHERE sid = '$SPK_SID'") or die(showDialog("Error!",  mysqli_error($conn), "error", "index.php"));
+                mysqli_query($conn, "UPDATE t_surat_perintah_kerja SET status = 'INPROGRESS', access_date = now() WHERE sid = '$SPK_SID'") or die(showDialog("Error!",  mysqli_error($conn), "error", "index.php"));
                 $isProses = 1;
                 showDialog("Berhasil", "Data Berhasil disimpan !", "success", "index.php");
             } else {
@@ -209,7 +209,7 @@
         $query = mysqli_query($conn, $str_wireline);
 
         if ($query) {
-            mysqli_query($conn, "UPDATE t_surat_perintah_kerja SET status = 'INPROGRESS' WHERE sid = '$SPK_SID'") or die(showDialog("Error!",  mysqli_error($conn), "error", "index.php"));
+            mysqli_query($conn, "UPDATE t_surat_perintah_kerja SET status = 'INPROGRESS', access_date = now() WHERE sid = '$SPK_SID'") or die(showDialog("Error!",  mysqli_error($conn), "error", "index.php"));
             $isError = 1;
             showDialog("Berhasil", "Data Berhasil disimpan !", "success", "index.php");
         } else {

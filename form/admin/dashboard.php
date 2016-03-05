@@ -1,10 +1,20 @@
+<?php 
+    $value_str_search = "";
+    $strSearch = "";
+    if (isset($_POST['src_search'])) {
+        $value_str_search = $_POST['src_search'];
+        $strSearch = "WHERE spk.no_spk like '%$value_str_search%' OR pel.nama_pelanggan like '%$value_str_search%' OR spk.akses like '%$value_str_search%' OR tim.nama_team like '%$value_str_search%'";
+    }
+?>
+
 <div class="row  border-bottom white-bg dashboard-header" style="padding: 5px;">
     <div class="col-sm-12">
     	<div class="col-sm-10">
     		<p>
                 <h1 style="">Selamat Datang Kembali <?php echo $_SESSION['nama'];?> !</h1>
-		        <h4>Dashboard Panel Admin Maintenance</h4>
-		        <small><a href="../../system/logout.php"><i class="fa fa-sign-out"></i> Logout</a></small>
+		        <h4>Dashboard Panel</h4>
+		        <small><a href="../../system/logout.php"><i class="fa fa-sign-out"></i> Logout</a></small>|
+                <small><a href="?page=view"><i class="fa fa-reply"></i> View Data</a></small>
 	        </p>
     	</div>
     	<div class="col-sm-2">
@@ -12,6 +22,19 @@
     	</div>
     </div>
 </div>
+<?php if ((isset($_GET['form'])) && ($_GET['form'] == "view_detail")) { ?>
+<?php 
+    $akses = $_GET['akses'];
+    if ($akses == "VSAT") {
+        include("view_rpt_vsat.php"); 
+    } else if ($akses == "WIRELESS") {
+        include("view_rpt_wireless.php"); 
+    } else if ($akses == "WIRELINE") {
+        include("view_rpt_wireline.php"); 
+    }
+    // include("view_rpt_vsat.php"); 
+?>
+<?php } else { ?>
 <div class="row" style="padding: 5px;">
 	<div  class="wrapper wrapper-content" style="padding: 5px 20px 5px 20px" > 
 		<div class="row">
@@ -170,8 +193,22 @@
                                 </div>
                             </div>
                             <div class="ibox-content">
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <form method="post" action="">
+                                            <div class="input-group">
+                                                <input type="text" name="src_search" value="<?php echo $value_str_search;?>" placeholder="Search by No SPK, Team, Customer dan Akses" class="input-sm form-control" /> 
+                                                <span class="input-group-btn">
+                                                    <button type="submit" class="btn btn-sm btn-primary"> Go!</button> 
+                                                </span>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                                 <table class="table table-hover no-margins">
-                                    <thead>
+                                    <!-- <thead>
                                     <tr>
                                         <th>Status</th>
                                         <th>Tanggal</th>
@@ -182,16 +219,17 @@
                                         <th>Team Leader</th>
                                         <th>Team Handling</th>
                                     </tr>
-                                    </thead>
+                                    </thead> -->
                                     <tbody>
                                     <?php 
-                                        $str = "SELECT  DATE_FORMAT(spk.tanggal, '%d/%m/%Y %h:%i:%s') as tanggal,
-                                                        no_spk, akses, masalah, pel.nama_pelanggan as nama_pelanggan, 
+                                        $str = "SELECT  DATE_FORMAT(spk.tanggal, '%d/%m/%Y %h:%i:%s') as tanggal, spk.sid as sid_spk,
+                                                        no_spk, akses, masalah, pel.nama_pelanggan as nama_pelanggan, DATE_FORMAT(spk.access_date, '%d/%m %h:%i') as access_date,
                                                         pel.alamat as alamat, tim.nama_team as nama_team, spk.status as status,
                                                         spk.cp_nama as cp_nama, tim.leader as leader, tim.no_handphone as no_hp
                                                 FROM t_surat_perintah_kerja spk 
                                                 LEFT JOIN m_pelanggan pel ON spk.id_pelanggan = pel.sid 
                                                 LEFT JOIN m_team_header tim ON spk.id_team = tim.sid 
+                                                $strSearch 
                                                 ORDER BY spk.status desc
                                                 ";
 
@@ -201,27 +239,45 @@
                                             $status = $arr['status'];
                                             if ($status == "NEW") {
                                                 $status = "<small>In Progress...</small>";
+                                            } else if($status == "CANCELED") {
+                                                $status = '<span class="label label-danger">Canceled</span><br/> <small><i class="fa fa-clock-o"></i>'.$arr["access_date"].'</small>';
                                             } else {
-                                                $status = '<span class="label label-primary">Completed</span> ';
+                                                $status = '<span class="label label-info">Completed</span> <br/> <small><i class="fa fa-clock-o"></i>'.$arr["access_date"].'</small>';
                                             }
                                     ?>
                                     <tr>
-                                        <td><?php echo $status; ?></td>
-                                        <td><i class="fa fa-clock-o"></i> <?php echo $arr['tanggal']; ?></td>
-                                        <td><?php echo $arr['cp_nama']; ?></td>
-                                        <td><?php echo $arr['masalah']; ?></td>
-                                        <td><?php echo $arr['nama_pelanggan']; ?></td>
-                                        <td><?php echo $arr['alamat']; ?></td>
-                                        <td><?php echo $arr['leader']."(".$arr['no_hp'].")"; ?></td>
-                                        <td class="text-navy"> <a><i class="fa fa-users"></i>&nbsp;<?php echo $arr['nama_team'] ?></a></td>
+                                        <td class="project-status" style="width: 90px;">
+                                            <?php echo $status ?>
+                                        </td>
+                                        <td class="project-status">
+                                            <span class="label label-primary"><?php echo $arr['akses'] ?></span>
+                                            <br/>
+                                            <small><?php echo $arr['no_spk'] ?></small>
+                                        </td>
+                                        <td class="project-title">
+                                            <a href="#"><?php echo $arr['nama_pelanggan'] ?></a>
+                                            <br/>
+                                            <small><i class="fa fa-clock-o"></i> <?php echo $arr['alamat'] ?></small>
+                                        </td>
+                                        <td class="project-title">
+                                            <a>Keluhan: <?php echo $arr['masalah'] ?></a>
+                                            <br/>
+                                            <small><i class="fa fa-clock-o"></i> <?php echo $arr['tanggal'] ?></small>
+                                        </td>
+                                        <td class="project-status">
+                                            <span class="label label-info">Team: <?php echo $arr['nama_team'] ?></span>
+                                            <br/>
+                                            <small><i class="fa fa-user"></i> <?php echo $arr['leader'] ?></small>
+                                        </td>
+                                        <td class="project-actions">
+                                            <?php if ($arr['status'] == "INPROGRESS") { ?>   
+                                            <a href="?form=view_detail&akses=<?php echo $arr['akses'];?>&sid=<?php echo $arr['sid_spk'];?>" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
+                                            <?php } else { ?>
+                                            <a class="btn btn-warning btn-sm"><i class="fa fa-yelp"></i> <?php echo $arr['status'];?> </a>
+                                            <?php } ?>
+                                        </td>
                                     </tr>
                                     <?php } ?>
-                                    <!-- <tr>
-                                        <td></td>
-                                        <td><i class="fa fa-clock-o"></i> 04:10am</td>
-                                        <td>Amelia</td>
-                                        <td class="text-navy"> <i class="fa fa-level-up"></i> 66% </td>
-                                    </tr> -->
                                     </tbody>
                                 </table>
                             </div>
@@ -372,3 +428,4 @@
                 };
         });
 </script>
+<?php } ?>

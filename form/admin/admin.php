@@ -1,4 +1,12 @@
 <?php 
+    $value_str_search = "";
+    $strSearch = "";
+    if (isset($_POST['src_search'])) {
+        $value_str_search = $_POST['src_search'];
+        $strSearch = "AND spk.no_spk like '%$value_str_search%' OR pel.nama_pelanggan like '%$value_str_search%' OR spk.akses like '%$value_str_search%' OR tim.nama_team like '%$value_str_search%'";
+    }
+?>
+<?php 
     //proses upload
     if (isset($_POST['btn_update'])) {
     $spk_sid = $_GET['sid'];
@@ -108,6 +116,18 @@
         });
     });
 </script>
+<?php } else if ((isset($_GET['form'])) && ($_GET['form'] == "view_detail")) { ?>
+<?php 
+    $akses = $_GET['akses'];
+    if ($akses == "VSAT") {
+        include("view_rpt_vsat.php"); 
+    } else if ($akses == "WIRELESS") {
+        include("view_rpt_wireless.php"); 
+    } else if ($akses == "WIRELINE") {
+        include("view_rpt_wireline.php"); 
+    }
+    // include("view_rpt_vsat.php"); 
+?>
 <?php } else { ?>
 <div class="row">
     <div class="col-sm-12">
@@ -124,26 +144,29 @@
                 </div>
             </div>
             <div class="ibox-content">
+              <div class="row">
+                    <div class="col-sm-8">
+                    </div>
+                    <div class="col-sm-4">
+                        <form method="post" action="">
+                            <div class="input-group">
+                                <input type="text" name="src_search" value="<?php echo $value_str_search;?>" placeholder="Search by No SPK, Team, Customer dan Akses" class="input-sm form-control" /> 
+                                <span class="input-group-btn">
+                                    <button type="submit" class="btn btn-sm btn-primary"> Go!</button> 
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
                 <table class="table table-hover no-margins">
-                    <thead>
-                    <tr>
-                        <th width="160px">Tanggal </th>
-                        <th>No. SPK</th>
-                        <th>Pelanggan</th>
-                        <th>Alamat</th>
-                        <th>Akses</th>
-                        <th>Keluhan</th>
-                        <th>Team</th>
-                    </tr>
-                    </thead>
                     <tbody>
                     <?php 
                         $str = "SELECT  DATE_FORMAT(spk.tanggal, '%d/%m/%Y %h:%i:%s') as tanggal, spk.sid as sid_spk,
-                                        no_spk, akses, masalah, pel.nama_pelanggan as nama_pelanggan, pel.alamat as alamat, tim.nama_team as nama_team
+                                        no_spk, status, akses, masalah, pel.nama_pelanggan as nama_pelanggan, pel.alamat as alamat, tim.nama_team as nama_team, tim.leader as leader
                                 FROM t_surat_perintah_kerja spk 
                                 LEFT JOIN m_pelanggan pel ON spk.id_pelanggan = pel.sid 
                                 LEFT JOIN m_team_header tim ON spk.id_team = tim.sid 
-                                WHERE spk.status = 'INPROGRESS'
+                                WHERE spk.status = 'INPROGRESS' $strSearch
                                 ";
 
                         // echo $str;
@@ -152,14 +175,32 @@
                         while($arr=mysqli_fetch_array($result)) {
                     ?>
                     <tr>
-                        <td><i class="fa fa-clock-o"></i> <?php echo $arr['tanggal'] ?></td>
-                        <td><?php echo $arr['no_spk'] ?></td>
-                        <td><?php echo $arr['nama_pelanggan'] ?></td>
-                        <td><?php echo $arr['alamat'] ?></td>
-                        <td><?php echo $arr['akses'] ?></td>
-                        <td><?php echo $arr['masalah'] ?></td>
-                        <td class="text-navy"> <a href="#"><i class="fa fa-users"></i>&nbsp;<?php echo $arr['nama_team'] ?></a></td>
-                        <td class="text-primary"> <a href="?page=lampiran&sid=<?php echo $arr['sid_spk'];?>"><i class="fa fa-file-o"></i>&nbsp;+ Lampiran</a></td>
+                        <td class="project-status">
+                            <span class="label label-primary"><?php echo $arr['akses'] ?></span>
+                            <br/>
+                            <small><?php echo $arr['no_spk'] ?></small>
+                        </td>
+                        <td class="project-title">
+                            <a href="#"><?php echo $arr['nama_pelanggan'] ?></a>
+                            <br/>
+                            <small><i class="fa fa-clock-o"></i> <?php echo $arr['alamat'] ?></small>
+                        </td>
+                        <td class="project-title">
+                            <a>Keluhan: <?php echo $arr['masalah'] ?></a>
+                            <br/>
+                            <small><i class="fa fa-clock-o"></i> <?php echo $arr['tanggal'] ?></small>
+                        </td>
+                        <td class="project-status">
+                            <span class="label label-info">Team: <?php echo $arr['nama_team'] ?></span>
+                            <br/>
+                            <small><i class="fa fa-user"></i> <?php echo $arr['leader'] ?></small>
+                        </td>
+                        <td class="project-actions">
+
+                            <a href="?form=view_detail&akses=<?php echo $arr['akses'];?>&sid=<?php echo $arr['sid_spk'];?>" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
+                            <a href="?page=lampiran&sid=<?php echo $arr['sid_spk'];?>" class="btn btn-white btn-sm"><i class="fa fa-plus-square"></i> Lampiran</a>
+                            <a href="#" class="btn btn-white btn-sm"><i class="fa fa-minus-square"></i> Hapus </a>
+                        </td>
                     </tr>
                     <?php }  ?>
                     </tbody>

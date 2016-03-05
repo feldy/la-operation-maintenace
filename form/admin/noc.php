@@ -1,3 +1,15 @@
+<?php 
+    $value_str_search = "";
+    $strSearch = "";
+    if (isset($_POST['src_search'])) {
+        $value_str_search = $_POST['src_search'];
+        $strSearch = "WHERE spk.no_spk like '%$value_str_search%' OR pel.nama_pelanggan like '%$value_str_search%' OR spk.akses like '%$value_str_search%' OR tim.nama_team like '%$value_str_search%'";
+    } else if (isset($_POST['action_cancel'])) {
+        $val_sid = $_POST['action_cancel'];
+        $qry = mysqli_query($conn, "UPDATE t_surat_perintah_kerja SET status = 'CANCELED', access_date = now() WHERE sid = '$val_sid'") or die(mysqli_error($conn));
+    }
+?>
+
 <div class="row  border-bottom white-bg dashboard-header" style="padding: 5px;">
     <div class="col-sm-12">
         <div class="col-sm-10">
@@ -114,12 +126,14 @@
                                     <div class="col-sm-8">
                                     </div>
                                     <div class="col-sm-4">
-                                        <div class="input-group">
-                                            <input type="text" placeholder="Search" class="input-sm form-control" /> 
-                                            <span class="input-group-btn">
-                                                <button type="button" class="btn btn-sm btn-primary"> Go!</button> 
-                                            </span>
-                                        </div>
+                                        <form method="post" action="">
+                                            <div class="input-group">
+                                                <input type="text" name="src_search" value="<?php echo $value_str_search;?>" placeholder="Search by No SPK, Team, Customer dan Akses" class="input-sm form-control" /> 
+                                                <span class="input-group-btn">
+                                                    <button type="submit" class="btn btn-sm btn-primary"> Go!</button> 
+                                                </span>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                                 <table class="table table-hover no-margins">
@@ -142,6 +156,7 @@
                                                 FROM t_surat_perintah_kerja spk 
                                                 LEFT JOIN m_pelanggan pel ON spk.id_pelanggan = pel.sid 
                                                 LEFT JOIN m_team_header tim ON spk.id_team = tim.sid 
+                                                $strSearch 
                                                 ORDER BY spk.tanggal desc
                                                 ";
 
@@ -171,14 +186,18 @@
                                             <br/>
                                             <small><i class="fa fa-user"></i> <?php echo $arr['leader'] ?></small>
                                         </td>
+                                        <form method="post" action="" id="form_cancel">
                                         <td class="project-actions">
                                             <?php if ($arr['status'] == "INPROGRESS") { ?>   
                                             <a href="?form=view_detail&akses=<?php echo $arr['akses'];?>&sid=<?php echo $arr['sid_spk'];?>" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
+                                            <?php } else if ($arr['status'] == "NEW" || $arr['status'] == "INPROGRESS") { ?>
+                                            <button type="submit" name="action_cancel" value="<?php echo $arr['sid_spk'];?>" class="btn btn-white btn-sm"><i class="fa fa-ban"></i> Cancel </button>
+                                            <!-- <a class="btn btn-warning btn-sm"><i class="fa fa-yelp"></i> Inprogress.. </a> -->
                                             <?php } else { ?>
-                                            <a class="btn btn-warning btn-sm"><i class="fa fa-yelp"></i> Inprogress.. </a>
+                                            <a class="btn btn-warning btn-sm"><i class="fa fa-yelp"></i> <?php echo $arr['status'];?> </a>
                                             <?php } ?>
-                                            <a href="#" class="btn btn-white btn-sm"><i class="fa fa-ban"></i> Cancel </a>
                                         </td>
+                                        </form>
                                     </tr>
                                     <?php }  ?>
                                     </tbody>
