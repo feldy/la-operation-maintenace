@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 28, 2016 at 02:28 AM
+-- Generation Time: Mar 05, 2016 at 06:10 PM
 -- Server version: 5.5.47-0ubuntu0.12.04.1
 -- PHP Version: 5.6.18-1+deb.sury.org~precise+1
 
@@ -160,7 +160,7 @@ CREATE TABLE `rpt_vsat_data_perangkat_terpasang` (
 --
 
 INSERT INTO `rpt_vsat_data_perangkat_terpasang` (`sid`, `spk_sid`, `tanggal`, `existing_nama_barang`, `existing_no_reg`, `existing_serial_number`, `temuan_tidak_terpakai_nama_barang`, `temuan_tidak_terpakai_no_reg`, `temuan_tidak_terpakai_serial_number`, `cabut_nama_barang`, `cabut_no_reg`, `cabut_serial_number`, `pengganti_nama_barang`, `pengganti_no_reg`, `pengganti_serial_number`) VALUES
-('e78fc92d-4c1e-4f25-9834-a149fd5672dc', '85b7fc9c-e4c2-4c6e-9592-3ec06488ef7c', '2016-02-28', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12');
+('e78fc92d-4c1e-4f25-9834-a149fd5672dc', '85b7fc9c-e4c2-4c6e-9592-3ec06488ef7c', '2016-02-28', '1,a,b', '2,c,d', '3,e,f', '4', '5', '6', '7', '8', '9', '10', '11', '12');
 
 -- --------------------------------------------------------
 
@@ -200,7 +200,7 @@ CREATE TABLE `rpt_vsat_indoor_area_checklist` (
 --
 
 INSERT INTO `rpt_vsat_indoor_area_checklist` (`sid`, `spk_sid`, `tanggal`, `merk_ups`, `kapasitas_ups`, `v_output_pn_pg_ng`, `jenis_ups`, `is_menggunakan_ups`, `is_bebas_debu`, `is_terpasang_groundbar_mdp`, `suhu_ruangan`, `catuan_input_modem`, `lokasi_lantai_ruang_rak`, `is_bertumpuk`, `v_input_modem_pn`, `v_input_modem_ng`, `is_suhu_casing_panas`, `is_terbounding_ke_ground_kencang`, `is_splicing_konektor_kabel_ifl`, `pemilik_perangkat_cpe`, `jenis_perangkat_cpe`, `is_perangkat_cpe_catuan_sama_dengan_modem`, `is_perangkat_cpe_bounding_sama_dengan_modem`, `temuan_indor_area`) VALUES
-('f328d193-2cfe-441a-82f9-e357c6a4e81c', '85b7fc9c-e4c2-4c6e-9592-3ec06488ef7c', '2016-02-28', 'UPS VSAT', '20000', 'IT|12|13|14', 'Continu', 1, 1, 1, '10', 'IT', '2, 705A, B07', 1, '225', '0.76', 1, 1, 1, 'Lintas Arta', 'Tutup', 0, 1, '&lt;span style=&quot;font-weight: bold;&quot;&gt;Banyak Sampah bro&lt;/span&gt;');
+('f328d193-2cfe-441a-82f9-e357c6a4e81c', '85b7fc9c-e4c2-4c6e-9592-3ec06488ef7c', '2016-02-28', 'UPS VSAT', '20000', 'IT|12|13|14', 'Continu', 1, 1, 1, '10', 'IT', '2, 705A, B07', 1, '225', '0.76', 1, 1, 1, 'Lintas Arta', 'Tutup', 0, 0, '&lt;span style=&quot;font-weight: bold;&quot;&gt;Banyak Sampah bro&lt;/span&gt;');
 
 -- --------------------------------------------------------
 
@@ -447,17 +447,20 @@ CREATE TABLE `t_surat_perintah_kerja` (
   `akses` varchar(50) NOT NULL,
   `status` varchar(20) NOT NULL,
   `lampiran_file` varchar(50) NOT NULL,
-  `lampiran_keterangan` text NOT NULL
+  `lampiran_keterangan` text NOT NULL,
+  `access_date` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `t_surat_perintah_kerja`
 --
 
-INSERT INTO `t_surat_perintah_kerja` (`sid`, `no_spk`, `id_pelanggan`, `id_team`, `tanggal`, `cp_nama`, `cp_telepon`, `masalah`, `catatan`, `akses`, `status`, `lampiran_file`, `lampiran_keterangan`) VALUES
-('248d5cc8-7537-4a84-bc29-90d9f661688a', '0002/JAR/2016', '753a4383-da49-11e5-9443-485b398462d1', '0c45f35b-dbc9-11e5-8c66-485b398462d1', '2016-02-28 22:10:29', 'Syaiful', '0987345625362', 'Gak tau', '&lt;p&gt;Gak tau Kenapa&lt;/p&gt;', 'WIRELESS', 'INPROGRESS', '', ''),
-('85b7fc9c-e4c2-4c6e-9592-3ec06488ef7c', '0001/JAR/2016', '00c9ed29-da39-11e5-9443-485b398462d1', 'c783bd3e-da38-11e5-9443-485b398462d1', '2016-02-28 22:10:29', 'Feldy Yusuf', '98765678767', 'Kena Petir', '&lt;p&gt;cek Kabelnya&lt;/p&gt;', 'VSAT', 'NEW', '', ''),
-('945104a9-e152-4fa8-9c17-5bb51311cee0', '0003/JAR/2016', '00c9ed29-da39-11e5-9443-485b398462d1', 'd21c758e-dd69-11e5-b450-485b398462d1', '2016-02-28 22:10:29', 'Saepul Jamil', '567845333', 'Belum Tahu', '&lt;p&gt;&lt;span style=&quot;font-style: italic;&quot;&gt;wewewe&lt;/span&gt;&lt;/p&gt;', 'WIRELINE', 'INPROGRESS', '', '');
+INSERT INTO `t_surat_perintah_kerja` (`sid`, `no_spk`, `id_pelanggan`, `id_team`, `tanggal`, `cp_nama`, `cp_telepon`, `masalah`, `catatan`, `akses`, `status`, `lampiran_file`, `lampiran_keterangan`, `access_date`) VALUES
+('0397eea8-c033-4479-b7f9-a4716fa46737', '0004/JAR/2016', '00c9ed29-da39-11e5-9443-485b398462d1', '0c45f35b-dbc9-11e5-8c66-485b398462d1', '2016-03-05 14:58:38', 'FFF', '235435', 'fgfh', '&lt;p&gt;dfg&lt;/p&gt;', 'WIRELESS', 'CANCELED', '', '', '2016-03-05 18:03:44'),
+('248d5cc8-7537-4a84-bc29-90d9f661688a', '0002/JAR/2016', '753a4383-da49-11e5-9443-485b398462d1', '0c45f35b-dbc9-11e5-8c66-485b398462d1', '2016-02-28 22:10:29', 'Syaiful', '0987345625362', 'Gak tau', '&lt;p&gt;Gak tau Kenapa&lt;/p&gt;', 'WIRELESS', 'INPROGRESS', '248d5cc8-7537-4a84-bc29-90d9f661688a.jpg', '<p>Haloooooo</p>', '2016-03-29 00:00:00'),
+('85b7fc9c-e4c2-4c6e-9592-3ec06488ef7c', '0001/JAR/2016', '00c9ed29-da39-11e5-9443-485b398462d1', 'c783bd3e-da38-11e5-9443-485b398462d1', '2016-02-28 22:10:29', 'Feldy Yusuf', '98765678767', 'Kena Petir', '&lt;p&gt;cek Kabelnya&lt;/p&gt;', 'VSAT', 'INPROGRESS', '', '', '2016-03-15 00:00:00'),
+('945104a9-e152-4fa8-9c17-5bb51311cee0', '0003/JAR/2016', '00c9ed29-da39-11e5-9443-485b398462d1', 'd21c758e-dd69-11e5-b450-485b398462d1', '2016-02-28 22:10:29', 'Saepul Jamil', '567845333', 'Belum Tahu', '&lt;p&gt;&lt;span style=&quot;font-style: italic;&quot;&gt;wewewe&lt;/span&gt;&lt;/p&gt;', 'WIRELINE', 'INPROGRESS', '', '', '2016-03-08 00:00:00'),
+('9a4489c9-cbc3-42a2-8253-28a76c3ff989', '0005/JAR/2016', '00c9ed29-da39-11e5-9443-485b398462d1', 'd21c758e-dd69-11e5-b450-485b398462d1', '2016-03-05 16:00:50', 'ererer', '2342', '234234', '&lt;p&gt;werwerer&lt;/p&gt;', 'WIRELINE', 'CANCELED', '', '', '2016-03-05 18:03:11');
 
 --
 -- Indexes for dumped tables
