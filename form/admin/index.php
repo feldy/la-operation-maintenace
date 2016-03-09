@@ -42,8 +42,9 @@
         <script src="../../lib/js/plugins/flot/jquery.flot.pie.js"></script>
         <script src="../../lib/js/plugins/flot/jquery.flot.symbol.js"></script>
         <script src="../../lib/js/plugins/flot/jquery.flot.time.js"></script>
-        <!-- EayPIE -->
-        <script src="../../lib/js/plugins/easypiechart/jquery.easypiechart.js"></script>
+        <!-- Chart -->
+        <script src="../../lib/js/plugins/chartJs/Chart.min.js"></script>
+
 
     </head>
     <body >
