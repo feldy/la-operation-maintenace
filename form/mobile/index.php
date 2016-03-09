@@ -101,6 +101,7 @@
                         $q = mysqli_query($conn, "SELECT * FROM m_team_header WHERE sid = '$id' ") or die(mysqli_error($conn));
                         $q = mysqli_fetch_array($q);
                     ?>
+                    <a href="logout_mobile.php"><i class="fa fa-sign-out"></i> Logout</a>
                     <h2>Wellcome <?php echo $q['nama_team']?></h2>
                     <h3>Operation and Maintenance</h3>
                     <button class="btn btn-primary dim btn-large-dim" style="width: 100%;" type="button" onclick="window.location.href = '?page=perintah_kerja'">

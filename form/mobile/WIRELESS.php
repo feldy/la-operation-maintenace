@@ -184,7 +184,7 @@
         		<i class="fa fa-group"></i> Nama Team: <?php echo $query['nama_team'];?> |
         		<i class="fa fa-child	"></i> Leader: <?php echo $query['leader'];?> |
 	        </a>
-        	<a href="logout_mobile.php"><i class="fa fa-sign-out"></i> Logout</a>
+        	<a href="index.php"><i class="fa fa-sign-out"></i> Home</a>
 	    </small>
     </div>
 </div>

@@ -65,7 +65,7 @@
                             Pemberitahuan
                         </h3>
                         <small>Belum ada Tugas Tersedia. :) </small>
-                        <h3><a href="logout_mobile.php" style="color: white" =""><i class="fa fa-sign-out"></i> Logout</a></h3>
+                        <h3><a href="index.php" style="color: white" =""><i class="fa fa-sign-out"></i> Back</a></h3>
                     </div>
                 </div>
             </div>
