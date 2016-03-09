@@ -104,34 +104,28 @@
                     <h2>Wellcome <?php echo $q['nama_team']?></h2>
                     <h3>Operation and Maintenance</h3>
                     <button class="btn btn-primary dim btn-large-dim" style="width: 100%;" type="button" onclick="window.location.href = '?page=perintah_kerja'">
-                        <div class="row">
-                            <div class="col-sm-2">
-                                <i class="fa fa-envelope-square"></i>
-                            </div>
-                            <div class="col-sm-10 text-right">
-                                <h2 class="font-bold">Perintah Kerja</h2>
-                            </div>
-                        </div>
+                        <table width="100%">
+                            <tr>
+                                <td width="40px"><i class="fa fa-envelope-square"></i></td>
+                                <td style="font-size: 25px; text-align: right;"><span>Perintah Kerja</span></td>
+                            </tr>
+                        </table>
                     </button>
                     <button class="btn btn-danger  dim btn-large-dim" style="width: 100%;" type="button">
-                        <div class="row">
-                            <div class="col-sm-2">
-                                <i class="fa fa-edit"></i>
-                            </div>
-                            <div class="col-sm-10 text-right">
-                                <h2 class="font-bold">Isi Laporan</h2>
-                            </div>
-                        </div>
+                        <table width="100%">
+                            <tr>
+                                <td width="40px"><i class="fa fa-edit"></i></td>
+                                <td style="font-size: 25px; text-align: right;"><span>Isi Laporan</span></td>
+                            </tr>
+                        </table>
                     </button>
                     <button class="btn btn-warning dim btn-large-dim" style="width: 100%;" type="button"  onclick="window.location.href = '?page=laporan_selesai'">
-                        <div class="row">
-                            <div class="col-sm-2">
-                                <i class="fa fa-list"></i>
-                            </div>
-                            <div class="col-sm-10 text-right">
-                                <h2 class="font-bold">Laporan Selesai</h2>
-                            </div>
-                        </div>
+                        <table width="100%">
+                            <tr>
+                                <td width="40px"><i class="fa fa-list"></i></td>
+                                <td style="font-size: 25px; text-align: right;"><span>Laporan Selesai</span></td>
+                            </tr>
+                        </table>
                     </button>
                 </div>
             </div>
