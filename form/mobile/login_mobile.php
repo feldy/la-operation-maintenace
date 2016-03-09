@@ -1,9 +1,4 @@
-<?php
-	session_start();
-    if (!empty($_SESSION['username']) && !empty($_SESSION['password']) ) {
-        echo "<script>window.location.href='index.php'</script>";
-    } else {
-?>
+
 <!DOCTYPE html>
 <html>
 
@@ -50,4 +45,3 @@
 	</div>
 </body>
 </hmtl>
-<?php } ?>
