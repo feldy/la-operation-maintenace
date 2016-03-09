@@ -92,22 +92,21 @@
             <?php } ?>
         <?php } else if (isset($_GET['page']) && $_GET['page'] == "laporan_selesai") { ?>
         <?php 
-        $value_str_search = "";
-        $strSearch = "";
+            $value_str_search = "";
+            $strSearch = "";
+            if (isset($_POST['src_search'])) {
+                $value_str_search = $_POST['src_search'];
+                $strSearch = "AND (spk.no_spk like '%$value_str_search%' OR pel.nama_pelanggan like '%$value_str_search%' OR spk.akses like '%$value_str_search%')";
+            }
         ?>
         <div class="col-sm-12">
             <div class="row">
                 <div class="col-sm-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h5>Daftar Maintenance Pelanggan</h5>
+                            <h5>Daftar Laporan Selesai</h5>
                             <div class="ibox-tools">
-                                <a class="collapse-link">
-                                    <i class="fa fa-chevron-up"></i>
-                                </a>
-                                <a class="close-link">
-                                    <i class="fa fa-times"></i>
-                                </a>
+                                <a href="index.php"><i class="fa fa-sign-out"></i> Back</a>
                             </div>
                         </div>
                         <div class="ibox-content">
@@ -117,7 +116,7 @@
                                 <div class="col-sm-4">
                                     <form method="post" action="">
                                         <div class="input-group">
-                                            <input type="text" name="src_search" value="<?php echo $value_str_search;?>" placeholder="Search by No SPK, Team, Customer dan Akses" class="input-sm form-control" /> 
+                                            <input type="text" name="src_search" value="<?php echo $value_str_search;?>" placeholder="Search by No SPK, Customer dan Akses" class="input-sm form-control" /> 
                                             <span class="input-group-btn">
                                                 <button type="submit" class="btn btn-sm btn-primary"> Go!</button> 
                                             </span>
@@ -130,17 +129,17 @@
                                 <?php 
                                     $id_team = $_SESSION['id_team_header'];
                                     $str = "SELECT  DATE_FORMAT(spk.tanggal, '%d/%m/%Y %h:%i:%s') as tanggal, spk.sid as sid_spk,
-                                                    no_spk, status, akses, DATE_FORMAT(spk.access_date, '%d/%m %h:%i') as access_date, masalah, pel.nama_pelanggan as nama_pelanggan, pel.alamat as alamat, tim.nama_team as nama_team, tim.leader as leader
+                                                    no_spk, if(status = 'INPROGRESS', 'DONE', status) as status, akses, DATE_FORMAT(spk.access_date, '%d/%m %h:%i') as access_date, masalah, pel.nama_pelanggan as nama_pelanggan, pel.alamat as alamat, tim.nama_team as nama_team, tim.leader as leader
                                             FROM t_surat_perintah_kerja spk 
                                             LEFT JOIN m_pelanggan pel ON spk.id_pelanggan = pel.sid 
                                             LEFT JOIN m_team_header tim ON spk.id_team = tim.sid 
-                                            WHERE tim.sid = '$id_team'
+                                            WHERE tim.sid = '$id_team' AND status <> 'NEW' 
                                             $strSearch 
                                             ORDER BY spk.tanggal desc LIMIT 10
                                             ";
 
                                     // echo $str;
-                                    $result = mysqli_query($conn, $str) or die(mysqli_error());
+                                    $result = mysqli_query($conn, $str) or die(mysqli_error($conn));
 
                                     while($arr=mysqli_fetch_array($result)) {
                                 ?>
