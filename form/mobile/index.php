@@ -126,27 +126,17 @@
                                 </div>
                             </div>
                             <table class="table table-hover no-margins">
-                                <!-- <thead>
-                                <tr>
-                                    <th width="160px">Tanggal </th>
-                                    <th>No. SPK</th>
-                                    <th>Pelanggan</th>
-                                    <th>Alamat</th>
-                                    <th>Akses</th>
-                                    <th>Keluhan</th>
-                                    <th>Team</th>
-                                    <th></th>
-                                </tr>
-                                </thead> -->
                                 <tbody>
                                 <?php 
+                                    $id_team = $_SESSION['id_team_header'];
                                     $str = "SELECT  DATE_FORMAT(spk.tanggal, '%d/%m/%Y %h:%i:%s') as tanggal, spk.sid as sid_spk,
-                                                    no_spk, status, akses, masalah, pel.nama_pelanggan as nama_pelanggan, pel.alamat as alamat, tim.nama_team as nama_team, tim.leader as leader
+                                                    no_spk, status, akses, DATE_FORMAT(spk.access_date, '%d/%m %h:%i') as access_date, masalah, pel.nama_pelanggan as nama_pelanggan, pel.alamat as alamat, tim.nama_team as nama_team, tim.leader as leader
                                             FROM t_surat_perintah_kerja spk 
                                             LEFT JOIN m_pelanggan pel ON spk.id_pelanggan = pel.sid 
                                             LEFT JOIN m_team_header tim ON spk.id_team = tim.sid 
+                                            WHERE tim.sid = '$id_team'
                                             $strSearch 
-                                            ORDER BY spk.tanggal desc
+                                            ORDER BY spk.tanggal desc LIMIT 10
                                             ";
 
                                     // echo $str;
@@ -163,30 +153,15 @@
                                     <td class="project-title">
                                         <a href="#"><?php echo $arr['nama_pelanggan'] ?></a>
                                         <br/>
-                                        <small><i class="fa fa-clock-o"></i> <?php echo $arr['alamat'] ?></small>
-                                    </td>
-                                    <td class="project-title">
-                                        <a>Keluhan: <?php echo $arr['masalah'] ?></a>
-                                        <br/>
-                                        <small><i class="fa fa-clock-o"></i> <?php echo $arr['tanggal'] ?></small>
+                                        <small><i class="fa fa-home"></i> <?php echo $arr['alamat'] ?></small>
                                     </td>
                                     <td class="project-status">
-                                        <span class="label label-info">Team: <?php echo $arr['nama_team'] ?></span>
+                                        <span class="label label-info"><?php echo $arr['status'] ?></span>
                                         <br/>
-                                        <small><i class="fa fa-user"></i> <?php echo $arr['leader'] ?></small>
-                                    </td>
-                                    <form method="post" action="" id="form_cancel">
-                                    <td class="project-actions">
-                                        <?php if ($arr['status'] == "INPROGRESS") { ?>   
-                                        <a href="?form=view_detail&akses=<?php echo $arr['akses'];?>&sid=<?php echo $arr['sid_spk'];?>" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
-                                        <?php } else if ($arr['status'] == "NEW" || $arr['status'] == "INPROGRESS") { ?>
-                                        <button type="submit" name="action_cancel" value="<?php echo $arr['sid_spk'];?>" class="btn btn-white btn-sm"><i class="fa fa-ban"></i> Cancel </button>
-                                        <!-- <a class="btn btn-warning btn-sm"><i class="fa fa-yelp"></i> Inprogress.. </a> -->
-                                        <?php } else { ?>
-                                        <a class="btn btn-warning btn-sm"><i class="fa fa-yelp"></i> <?php echo $arr['status'];?> </a>
+                                        <?php if ($arr['access_date']) { ?>
+                                        <small><i class="fa fa-clock-o"></i> <?php echo $arr['access_date'] ?></small>
                                         <?php } ?>
                                     </td>
-                                    </form>
                                 </tr>
                                 <?php }  ?>
                                 </tbody>
