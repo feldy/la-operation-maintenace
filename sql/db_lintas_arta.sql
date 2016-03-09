@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.5
+-- version 4.5.4.1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 05, 2016 at 06:10 PM
+-- Generation Time: Mar 07, 2016 at 10:59 AM
 -- Server version: 5.5.47-0ubuntu0.12.04.1
--- PHP Version: 5.6.18-1+deb.sury.org~precise+1
+-- PHP Version: 5.5.29-1+deb.sury.org~precise+3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -39,8 +39,10 @@ CREATE TABLE `m_pelanggan` (
 --
 
 INSERT INTO `m_pelanggan` (`sid`, `no_jaringan`, `nama_pelanggan`, `alamat`, `no_telepon`) VALUES
-('00c9ed29-da39-11e5-9443-485b398462d1', '001201601', 'Feldy Yusuf', 'Depok 2 Timur', '08786543643'),
-('753a4383-da49-11e5-9443-485b398462d1', '12345678', 'Rizky Pratama', 'Tanah Abang', '345234564');
+('00c9ed29-da39-11e5-9443-485b398462d1', '2011001111', 'Bank Jatim', 'Depok 2 Timur', '08786543643'),
+('19fde0cf-dfab-11e5-9128-002590d2c589', '2011003333', 'Bank Mandiri', 'Tb simatupang', '0212211122'),
+('19fe048b-dfab-11e5-9128-002590d2c589', '2011004444', 'Bank Banten', 'banten raya', '08544332211'),
+('753a4383-da49-11e5-9443-485b398462d1', '2011002222', 'Bank Mega', 'Tanah Abang', '021223344');
 
 -- --------------------------------------------------------
 
@@ -80,9 +82,10 @@ CREATE TABLE `m_team_header` (
 --
 
 INSERT INTO `m_team_header` (`sid`, `nama_team`, `leader`, `tanggal`, `no_handphone`) VALUES
-('0c45f35b-dbc9-11e5-8c66-485b398462d1', 'Quatro 8', 'Endra', '2016-02-25', '0987753656'),
-('c783bd3e-da38-11e5-9443-485b398462d1', 'Quatro 1', 'Okta Wota', '2016-02-23', '0987654323456'),
-('d21c758e-dd69-11e5-b450-485b398462d1', 'Intel Atom', 'Syaiiful', '2016-02-02', '324234234234');
+('0c45f35b-dbc9-11e5-8c66-485b398462d1', 'Quart 1', 'Indra', '2016-02-25', '0987753656'),
+('566a408f-de21-11e5-9128-002590d2c589', 'Quart 4', 'Robby Zemy', '2016-02-28', '09874545454'),
+('c783bd3e-da38-11e5-9443-485b398462d1', 'Quart 2', 'Okta ', '2016-02-23', '0987654323456'),
+('d21c758e-dd69-11e5-b450-485b398462d1', 'Quart 3', 'Syaiiful', '2016-02-02', '324234234234');
 
 -- --------------------------------------------------------
 
@@ -103,10 +106,9 @@ CREATE TABLE `m_user` (
 --
 
 INSERT INTO `m_user` (`sid`, `username`, `password`, `role`, `nama`) VALUES
-('4b8598c2-da38-11e5-9443-485b398462d1', 'admin', 'admin', 'admin', 'Endra Krisna'),
-('4b85aa5d-da38-11e5-9443-485b398462d1', 'team', 'team', 'team', 'Robby Zemi'),
-('88561735-da38-11e5-9443-485b398462d1', 'manager', 'manager', 'manager', 'Agus Supryatna'),
-('a0bb230e-da38-11e5-9443-485b398462d1', 'noc', 'noc', 'noc', 'Syaiful Epul');
+('4b8598c2-da38-11e5-9443-485b398462d1', 'admin', 'admin', 'admin', 'Juli Pratiwi'),
+('88561735-da38-11e5-9443-485b398462d1', 'manager', 'manager', 'manager', 'Eddy Sofendy'),
+('a0bb230e-da38-11e5-9443-485b398462d1', 'noc', 'noc', 'noc', 'Chandra');
 
 -- --------------------------------------------------------
 
@@ -127,9 +129,10 @@ CREATE TABLE `m_user_team` (
 --
 
 INSERT INTO `m_user_team` (`sid`, `id_team_header`, `username`, `password`, `role`) VALUES
-('3cce788b-dbc9-11e5-8c66-485b398462d1', '0c45f35b-dbc9-11e5-8c66-485b398462d1', 'team_endra', 'team_endra', 'team'),
-('9ecac66b-dd6a-11e5-b450-485b398462d1', 'd21c758e-dd69-11e5-b450-485b398462d1', 'intel', 'intel', 'team'),
-('c3a61e4c-db16-11e5-b6e3-485b398462d1', 'c783bd3e-da38-11e5-9443-485b398462d1', 'team', 'team', 'team');
+('3cce788b-dbc9-11e5-8c66-485b398462d1', '0c45f35b-dbc9-11e5-8c66-485b398462d1', 'Quart 1', 'admin1', 'team'),
+('6a80ab67-de21-11e5-9128-002590d2c589', '566a408f-de21-11e5-9128-002590d2c589', 'Quart 4', 'admin4', 'team'),
+('9ecac66b-dd6a-11e5-b450-485b398462d1', 'd21c758e-dd69-11e5-b450-485b398462d1', 'Quart 3', 'admin3', 'team'),
+('c3a61e4c-db16-11e5-b6e3-485b398462d1', 'c783bd3e-da38-11e5-9443-485b398462d1', 'Quart 2', 'admin2', 'team');
 
 -- --------------------------------------------------------
 
@@ -160,7 +163,7 @@ CREATE TABLE `rpt_vsat_data_perangkat_terpasang` (
 --
 
 INSERT INTO `rpt_vsat_data_perangkat_terpasang` (`sid`, `spk_sid`, `tanggal`, `existing_nama_barang`, `existing_no_reg`, `existing_serial_number`, `temuan_tidak_terpakai_nama_barang`, `temuan_tidak_terpakai_no_reg`, `temuan_tidak_terpakai_serial_number`, `cabut_nama_barang`, `cabut_no_reg`, `cabut_serial_number`, `pengganti_nama_barang`, `pengganti_no_reg`, `pengganti_serial_number`) VALUES
-('e78fc92d-4c1e-4f25-9834-a149fd5672dc', '85b7fc9c-e4c2-4c6e-9592-3ec06488ef7c', '2016-02-28', '1,a,b', '2,c,d', '3,e,f', '4', '5', '6', '7', '8', '9', '10', '11', '12');
+('e78fc92d-4c1e-4f25-9834-a149fd5672dc', '85b7fc9c-e4c2-4c6e-9592-3ec06488ef7c', '2016-02-28', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12');
 
 -- --------------------------------------------------------
 
@@ -200,7 +203,7 @@ CREATE TABLE `rpt_vsat_indoor_area_checklist` (
 --
 
 INSERT INTO `rpt_vsat_indoor_area_checklist` (`sid`, `spk_sid`, `tanggal`, `merk_ups`, `kapasitas_ups`, `v_output_pn_pg_ng`, `jenis_ups`, `is_menggunakan_ups`, `is_bebas_debu`, `is_terpasang_groundbar_mdp`, `suhu_ruangan`, `catuan_input_modem`, `lokasi_lantai_ruang_rak`, `is_bertumpuk`, `v_input_modem_pn`, `v_input_modem_ng`, `is_suhu_casing_panas`, `is_terbounding_ke_ground_kencang`, `is_splicing_konektor_kabel_ifl`, `pemilik_perangkat_cpe`, `jenis_perangkat_cpe`, `is_perangkat_cpe_catuan_sama_dengan_modem`, `is_perangkat_cpe_bounding_sama_dengan_modem`, `temuan_indor_area`) VALUES
-('f328d193-2cfe-441a-82f9-e357c6a4e81c', '85b7fc9c-e4c2-4c6e-9592-3ec06488ef7c', '2016-02-28', 'UPS VSAT', '20000', 'IT|12|13|14', 'Continu', 1, 1, 1, '10', 'IT', '2, 705A, B07', 1, '225', '0.76', 1, 1, 1, 'Lintas Arta', 'Tutup', 0, 0, '&lt;span style=&quot;font-weight: bold;&quot;&gt;Banyak Sampah bro&lt;/span&gt;');
+('f328d193-2cfe-441a-82f9-e357c6a4e81c', '85b7fc9c-e4c2-4c6e-9592-3ec06488ef7c', '2016-02-28', 'UPS VSAT', '20000', 'IT|12|13|14', 'Continu', 1, 1, 1, '10', 'IT', '2, 705A, B07', 1, '225', '0.76', 1, 1, 1, 'Lintas Arta', 'Tutup', 0, 1, '&lt;span style=&quot;font-weight: bold;&quot;&gt;Banyak Sampah bro&lt;/span&gt;');
 
 -- --------------------------------------------------------
 
@@ -289,7 +292,8 @@ CREATE TABLE `rpt_wireless_data_perangkat_terpasang` (
 --
 
 INSERT INTO `rpt_wireless_data_perangkat_terpasang` (`sid`, `spk_sid`, `tanggal`, `existing_nama_barang`, `existing_no_reg`, `existing_serial_number`, `temuan_tidak_terpakai_nama_barang`, `temuan_tidak_terpakai_no_reg`, `temuan_tidak_terpakai_serial_number`, `cabut_nama_barang`, `cabut_no_reg`, `cabut_serial_number`, `pengganti_nama_barang`, `pengganti_no_reg`, `pengganti_serial_number`) VALUES
-('6fdcbd0b-4941-4817-8d9f-2413e2c7e053', '248d5cc8-7537-4a84-bc29-90d9f661688a', '2016-02-28', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l');
+('6fdcbd0b-4941-4817-8d9f-2413e2c7e053', '248d5cc8-7537-4a84-bc29-90d9f661688a', '2016-02-28', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l'),
+('e868fb24-cf07-4355-a966-4e322becffcf', 'ca2ee440-e589-4d0f-8dd8-56d7cf1a3bcd', '2016-02-28', '', '', '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -329,6 +333,7 @@ CREATE TABLE `rpt_wireless_indoor_area_checklist` (
 --
 
 INSERT INTO `rpt_wireless_indoor_area_checklist` (`sid`, `spk_sid`, `tanggal`, `merk_ups`, `kapasitas_ups`, `v_output_pn_pg_ng`, `jenis_ups`, `is_menggunakan_ups`, `is_bebas_debu`, `is_terpasang_groundbar_mdp`, `suhu_ruangan`, `catuan_input_modem`, `lokasi_lantai_ruang_rak`, `is_bertumpuk`, `v_input_modem_pn`, `v_input_modem_ng`, `is_suhu_casing_panas`, `is_terbounding_ke_ground_kencang`, `is_splicing_konektor_kabel_ifl`, `pemilik_perangkat_cpe`, `jenis_perangkat_cpe`, `is_perangkat_cpe_catuan_sama_dengan_modem`, `is_perangkat_cpe_bounding_sama_dengan_modem`, `temuan_indor_area`) VALUES
+('4e0a916f-ebb7-4ebd-9fcf-933728e6acd7', 'ca2ee440-e589-4d0f-8dd8-56d7cf1a3bcd', '2016-02-28', 'Apc', '2kva', 'UPS|220|221|0,1', 'Sinus', 0, 0, 0, '', 'UPS', 'Lantai 2 ruang server', 1, '', '', 0, 0, 0, 'Lintas Arta', 'Cicso 887', 0, 0, ''),
 ('4e38f7a7-8491-4d47-8581-0de032a3626c', '248d5cc8-7537-4a84-bc29-90d9f661688a', '2016-02-28', 'UPS Wireless', '6054', 'PLN/Gedung|50|87|88', 'Sinus', 1, 1, 1, '5', 'Stabilizer', '4, 66m, 780', 1, '5', '4', 0, 1, 1, 'Pelanggan', 'r125', 1, 1, '&lt;span style=&quot;font-weight: bold;&quot;&gt;Ada banyak orang&lt;/span&gt;');
 
 -- --------------------------------------------------------
@@ -350,6 +355,7 @@ CREATE TABLE `rpt_wireless_informasi` (
 --
 
 INSERT INTO `rpt_wireless_informasi` (`sid`, `spk_sid`, `tanggal`, `file_photo`, `catatan`) VALUES
+('5e5598f3-5142-4060-b32a-ae2b125ec7a7', 'ca2ee440-e589-4d0f-8dd8-56d7cf1a3bcd', '2016-02-28', '', ''),
 ('7f62eb60-da04-4c34-9bbe-e5a9fc010746', '248d5cc8-7537-4a84-bc29-90d9f661688a', '2016-02-28', '248d5cc8-7537-4a84-bc29-90d9f661688a.jpg', 'Bahaya 1');
 
 -- --------------------------------------------------------
@@ -426,6 +432,8 @@ CREATE TABLE `rpt_wireline` (
 --
 
 INSERT INTO `rpt_wireline` (`sid`, `spk_sid`, `tanggal`, `lantai_posisi_modem`, `ruang`, `output_tegangan_ke_modem`, `grounding_bar_koneksi`, `is_ada_ac`, `suhu_ruangan`, `existing_nama_barang`, `existing_no_reg`, `existing_serial_number`, `temuan_tidak_terpakai_nama_barang`, `temuan_tidak_terpakai_no_reg`, `temuan_tidak_terpakai_serial_number`, `cabut_nama_barang`, `cabut_no_reg`, `cabut_serial_number`, `pengganti_nama_barang`, `pengganti_no_reg`, `pengganti_serial_number`, `catatan_soltem_ljm`, `file_photo`) VALUES
+('16431814-8f06-4e56-95c9-202bd5637d0c', '425ffce9-d9f6-462f-9747-2deab96c5370', '2016-03-02', '3', 'Server', 'UPS|220|221|0', 'MDP/Sumber Ground', 0, '', 'Cisco 877', 'B2WN23016647888', '', '', '', '', '', '', '', '', '', '', '', ''),
+('86a5e202-1898-4020-ae63-f55549220f04', 'afe033df-cb4d-48b1-9dac-4f57e4fe5c42', '2016-03-01', 'Lantai 2', 'Server', 'UPS|220|220|0', 'MDP/Sumber Ground', 0, '', 'Modem cisco 877', 'B2WN23016647477', '', '', '', '', '', '', '', '', '', '', 'Cek site ok&lt;div&gt;Cek modem hang&lt;/div&gt;&lt;div&gt;Reset moden ok&lt;/div&gt;&lt;div&gt;Aplikasi ok&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;', ''),
 ('98c468f9-9da7-4bfd-a9e1-1875ddf8a098', '945104a9-e152-4fa8-9c17-5bb51311cee0', '2016-02-28', '5', '671', 'PLN/Gedung|55|54|52', 'CPE/Router', 1, '16', '11', '22', '33', '44', '55', '66', '77', '88', '99', '1010', '1111', '1212', '&lt;span style=&quot;font-weight: bold;&quot;&gt;sotem jukl&lt;/span&gt;', '945104a9-e152-4fa8-9c17-5bb51311cee0.jpg');
 
 -- --------------------------------------------------------
@@ -456,11 +464,10 @@ CREATE TABLE `t_surat_perintah_kerja` (
 --
 
 INSERT INTO `t_surat_perintah_kerja` (`sid`, `no_spk`, `id_pelanggan`, `id_team`, `tanggal`, `cp_nama`, `cp_telepon`, `masalah`, `catatan`, `akses`, `status`, `lampiran_file`, `lampiran_keterangan`, `access_date`) VALUES
-('0397eea8-c033-4479-b7f9-a4716fa46737', '0004/JAR/2016', '00c9ed29-da39-11e5-9443-485b398462d1', '0c45f35b-dbc9-11e5-8c66-485b398462d1', '2016-03-05 14:58:38', 'FFF', '235435', 'fgfh', '&lt;p&gt;dfg&lt;/p&gt;', 'WIRELESS', 'CANCELED', '', '', '2016-03-05 18:03:44'),
-('248d5cc8-7537-4a84-bc29-90d9f661688a', '0002/JAR/2016', '753a4383-da49-11e5-9443-485b398462d1', '0c45f35b-dbc9-11e5-8c66-485b398462d1', '2016-02-28 22:10:29', 'Syaiful', '0987345625362', 'Gak tau', '&lt;p&gt;Gak tau Kenapa&lt;/p&gt;', 'WIRELESS', 'INPROGRESS', '248d5cc8-7537-4a84-bc29-90d9f661688a.jpg', '<p>Haloooooo</p>', '2016-03-29 00:00:00'),
-('85b7fc9c-e4c2-4c6e-9592-3ec06488ef7c', '0001/JAR/2016', '00c9ed29-da39-11e5-9443-485b398462d1', 'c783bd3e-da38-11e5-9443-485b398462d1', '2016-02-28 22:10:29', 'Feldy Yusuf', '98765678767', 'Kena Petir', '&lt;p&gt;cek Kabelnya&lt;/p&gt;', 'VSAT', 'INPROGRESS', '', '', '2016-03-15 00:00:00'),
-('945104a9-e152-4fa8-9c17-5bb51311cee0', '0003/JAR/2016', '00c9ed29-da39-11e5-9443-485b398462d1', 'd21c758e-dd69-11e5-b450-485b398462d1', '2016-02-28 22:10:29', 'Saepul Jamil', '567845333', 'Belum Tahu', '&lt;p&gt;&lt;span style=&quot;font-style: italic;&quot;&gt;wewewe&lt;/span&gt;&lt;/p&gt;', 'WIRELINE', 'INPROGRESS', '', '', '2016-03-08 00:00:00'),
-('9a4489c9-cbc3-42a2-8253-28a76c3ff989', '0005/JAR/2016', '00c9ed29-da39-11e5-9443-485b398462d1', 'd21c758e-dd69-11e5-b450-485b398462d1', '2016-03-05 16:00:50', 'ererer', '2342', '234234', '&lt;p&gt;werwerer&lt;/p&gt;', 'WIRELINE', 'CANCELED', '', '', '2016-03-05 18:03:11');
+('425ffce9-d9f6-462f-9747-2deab96c5370', '0004/JAR/2016', '19fe048b-dfab-11e5-9128-002590d2c589', '566a408f-de21-11e5-9128-002590d2c589', '2016-03-02 06:31:36', 'sigit', '2222', 'down', 'modem alarm&lt;br&gt;', 'WIRELINE', 'INPROGRESS', '', '', NULL),
+('82273a59-e039-44e3-a51e-b9948f8000c4', '0001/JAR/2016', '00c9ed29-da39-11e5-9443-485b398462d1', 'c783bd3e-da38-11e5-9443-485b398462d1', '2016-03-01 12:54:43', 'Desi', '021654433', 'Antena terhalang pohon', '&lt;p&gt;mohon segera di cek karena akses pelanggan sudah down dari kemarin&lt;/p&gt;', 'WIRELESS', 'NEW', '', '', NULL),
+('afe033df-cb4d-48b1-9dac-4f57e4fe5c42', '0002/JAR/2016', '753a4383-da49-11e5-9443-485b398462d1', '0c45f35b-dbc9-11e5-8c66-485b398462d1', '2016-03-01 12:59:01', 'Suci', '0852211188', 'kabel putus ', 'janjian dengan pelanggan jam 12 siang setelah makan siang', 'WIRELINE', 'INPROGRESS', 'afe033df-cb4d-48b1-9dac-4f57e4fe5c42.jpg', '<p>pembelian tool untuk gangguan </p>', NULL),
+('ccd0b359-b56b-46ba-b9df-0755c4cb118d', '0003/JAR/2016', '19fde0cf-dfab-11e5-9128-002590d2c589', 'd21c758e-dd69-11e5-b450-485b398462d1', '2016-03-02 03:07:35', 'susi', '08956441122', 'belum di ketahui', '&lt;p&gt;menggunakan modem BWA 2&lt;br&gt;&lt;/p&gt;', 'WIRELESS', 'CANCELED', '', '', '2016-03-07 10:58:32');
 
 --
 -- Indexes for dumped tables

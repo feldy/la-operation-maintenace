@@ -94,7 +94,7 @@
                                                             </tr>
                                                             <tr>
                                                                 <td>Ruang</td>
-                                                                <td colspan="3">: <?php echo number_format($wireline1['ruang']);?></td>
+                                                                <td colspan="3">: <?php echo $wireline1['ruang'];?></td>
                                                             </tr>
                                                             <?php
                                                                 $vOutput = $wireline1['output_tegangan_ke_modem'];
@@ -152,7 +152,7 @@
                                                             </tr>
                                                             <tr>
                                                                 <td>Suhu Ruangan Perangkat</td>
-                                                                <td colspan="3">: <?php echo number_format($wireline1['suhu_ruangan']);?></td>
+                                                                <td colspan="3">: <?php echo $wireline1['suhu_ruangan'];?></td>
                                                             </tr>
                                                             </tbody>
                                                             <thead>
